@@ -135,7 +135,7 @@ function genPriceCol(cartItem) {
     price.className = 'price';
     let price_span = document.createElement('span');
     price_span.className = 'line-item-total';
-    price_span.innerHTML = String(cartItem.totalPrice);
+    price_span.innerHTML = String(cartItem.totalPrice) + 'đ';
     price.appendChild(price_span);
     line_price.appendChild(price);
 
@@ -152,7 +152,7 @@ function genQuantityInputCol(cartItem) {
     let subBtn = document.createElement('button');
     subBtn.innerHTML = '-';
     subBtn.setAttribute('type', 'button');
-    subBtn.className = 'qtyminus qty-btn';
+    subBtn.className = 'btn btn-light qtyminus qty-btn';
 
     // number of product in cart
     let inputTag = document.createElement('input');
@@ -167,7 +167,7 @@ function genQuantityInputCol(cartItem) {
 
     let addBtn = document.createElement('button');
     addBtn.type = 'button';
-    addBtn.className = 'qtyplus qty-btn';
+    addBtn.className = 'btn btn-light qtyplus qty-btn';
     addBtn.innerHTML = '+';
 
     quantityBtnWrapper.append(subBtn, inputTag, addBtn);
@@ -185,6 +185,7 @@ function genImageAndProductInfoCol(cartItem) {
 
     let imgToProductUrl = document.createElement('a');
     imgToProductUrl.setAttribute('href', cartItem.productURL);
+    imgToProductUrl.className = "thumb-cart";
 
     let imgTag = document.createElement('img');
     imgTag.src = cartItem.imgUrl;
@@ -194,7 +195,7 @@ function genImageAndProductInfoCol(cartItem) {
     productName.innerHTML = cartItem.name;
 
     let price = document.createElement('span');
-    price.innerHTML = cartItem.unitPrice;
+    price.innerHTML = cartItem.unitPrice + 'đ';
 
     imgToProductUrl.append(imgTag, productName, price);
     imgContainer.appendChild(imgToProductUrl);
