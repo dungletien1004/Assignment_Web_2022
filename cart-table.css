@@ -83,7 +83,7 @@ table tr {
     vertical-align: middle;
     color: black;
     margin-bottom: 20px;
-    padding: 10px 25px;
+    padding: 15px 25px;
 }
 
 .total_price {
@@ -93,7 +93,8 @@ table tr {
 .cart-buttons {
     border-top: 1px solid #eee;
     background-color: #fafafa;
-    padding: 25px;
+    padding: 30px;
+    font-size: 1.25em;
 }
 
 #checkout {
@@ -112,4 +113,10 @@ textarea {
     height: 80px;
     margin-top: 10px;
     border-radius: 15px;
+}
+
+.link-continue-back {
+    margin: 30px 0px;
+    padding: 0 20px;
+    line-height: 55px;
 }

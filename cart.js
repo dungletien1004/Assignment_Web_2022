@@ -36,23 +36,23 @@ class CartItem {
 
 // example data in customer's cart! NOT REAL DATA.
 const cart_data = [
-    new CartItem(
-        0,
-        'HOODIE BASIC / GREY - GREEN',
-        159000, 'M',
-        'https://product.hstatic.net/200000260587/product/hardmode-hoodie_emb_logo_huskies_gold_1_0b83b15759f8484382fadca6d3437da7_master.jpg',
-        2,
-        '#', // product URL
+    // new CartItem(
+    //     0,
+    //     'HOODIE BASIC / GREY - GREEN',
+    //     159000, 'M',
+    //     'https://product.hstatic.net/200000260587/product/hardmode-hoodie_emb_logo_huskies_gold_1_0b83b15759f8484382fadca6d3437da7_master.jpg',
+    //     2,
+    //     '#', // product URL
 
-    ),
-    new CartItem(
-        1,
-        'HUMMING BIRD HOODIE / BLUE',
-        159000, 'L',
-        'https://product.hstatic.net/200000260587/product/c40dd138-2027-460e-bcdb-fbdf7d7f8964_38e5042db7314c8b85f26a4edaa85be1_master.jpeg',
-        1,
-        '#', // product URL
-    )
+    // ),
+    // new CartItem(
+    //     1,
+    //     'HUMMING BIRD HOODIE / BLUE',
+    //     159000, 'L',
+    //     'https://product.hstatic.net/200000260587/product/c40dd138-2027-460e-bcdb-fbdf7d7f8964_38e5042db7314c8b85f26a4edaa85be1_master.jpeg',
+    //     1,
+    //     '#', // product URL
+    // )
 ]
 
 function getTotalPrice() {
@@ -63,7 +63,7 @@ function getTotalPrice() {
     return totalPrice;
 }
 
-if (cart_data) {
+if (cart_data.length > 0) {
     genCartTable();
     genTotalCart();
 } else {
@@ -283,4 +283,27 @@ function genTotalCart() {
 
 function genEmptyCart() {
     console.log("Empty cart");
+
+    let divMessage = document.createElement('div');
+    divMessage.className = 'span12 expanded-message text-center';
+    divMessage.innerHTML = 'Giỏ hàng của bạn đang trống';
+
+    let p = document.createElement('p');
+    p.className = 'link-continue-back';
+
+    let a = document.createElement('a');
+    a.href = '#';
+    a.className = 'btn btn-dark'
+
+    let i = document.createElement('i');
+    i.className = 'fa fa-reply';
+
+
+    console.log(i);
+    a.innerHTML = "Tiếp tục mua hàng  ";
+    a.appendChild(i);
+    p.appendChild(a);
+    divMessage.appendChild(p);
+    let cartContainer = document.getElementById('main');
+    cartContainer.appendChild(divMessage);
 }
