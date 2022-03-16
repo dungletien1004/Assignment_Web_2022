@@ -45,14 +45,14 @@ const cart_data = [
     //     '#', // product URL
 
     // ),
-    // new CartItem(
-    //     1,
-    //     'HUMMING BIRD HOODIE / BLUE',
-    //     159000, 'L',
-    //     'https://product.hstatic.net/200000260587/product/c40dd138-2027-460e-bcdb-fbdf7d7f8964_38e5042db7314c8b85f26a4edaa85be1_master.jpeg',
-    //     1,
-    //     '#', // product URL
-    // )
+    new CartItem(
+        1,
+        'HUMMING BIRD HOODIE / BLUE',
+        159000, 'L',
+        'https://product.hstatic.net/200000260587/product/c40dd138-2027-460e-bcdb-fbdf7d7f8964_38e5042db7314c8b85f26a4edaa85be1_master.jpeg',
+        1,
+        '#', // product URL
+    )
 ]
 
 function getTotalPrice() {
@@ -63,7 +63,9 @@ function getTotalPrice() {
     return totalPrice;
 }
 
-if (cart_data.length > 0) {
+let cart_existed = cart_data.length > 0;
+
+if (cart_existed) {
     genCartTable();
     genTotalCart();
 } else {

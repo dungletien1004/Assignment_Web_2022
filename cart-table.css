@@ -50,6 +50,7 @@ span {
     color: #000000;
     text-align: center;
     border: 1px solid #dadbdd;
+    border-radius: 0px;
 }
 
 .price {
