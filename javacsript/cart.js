@@ -36,15 +36,15 @@ class CartItem {
 
 // example data in customer's cart! NOT REAL DATA.
 const cart_data = [
-    // new CartItem(
-    //     0,
-    //     'HOODIE BASIC / GREY - GREEN',
-    //     159000, 'M',
-    //     'https://product.hstatic.net/200000260587/product/hardmode-hoodie_emb_logo_huskies_gold_1_0b83b15759f8484382fadca6d3437da7_master.jpg',
-    //     2,
-    //     '#', // product URL
+    new CartItem(
+        0,
+        'HOODIE BASIC / GREY - GREEN',
+        159000, 'M',
+        'https://product.hstatic.net/200000260587/product/hardmode-hoodie_emb_logo_huskies_gold_1_0b83b15759f8484382fadca6d3437da7_master.jpg',
+        2,
+        '#', // product URL
 
-    // ),
+    ),
     new CartItem(
         1,
         'HUMMING BIRD HOODIE / BLUE',
