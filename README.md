@@ -6,4 +6,7 @@
 Để có thể mô phỏng trang, trong file [cart.js](./cart.js) có chứa dữ liệu **giả** dùng để mô phỏng do chưa làm phần database. 
 ## Paymenet Page
 
->>Still working ...
+Đã xong phần static.
+
+
+**NOTE** Do đây mới chỉ là giao diện tĩnh nên chưa có sự liên kết giữa các page. Muốn xem các page hiển thị như thế nào thì cần mở từng file html.
