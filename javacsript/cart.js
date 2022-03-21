@@ -55,6 +55,8 @@ const cart_data = [
     )
 ]
 
+
+
 function getTotalPrice() {
     let totalPrice = 0;
     cart_data.forEach(item => {

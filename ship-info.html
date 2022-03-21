@@ -14,9 +14,7 @@
     <link href="./css/cart-table.css" type="text/css" rel="stylesheet">
     <link href="./css/ship-info.css" type="text/css" rel="stylesheet">
     <script src="./javacsript/cart-summary.js" type="text/javascript" async></script>
-    <link href="./css/payment.css" type="text/css" rel="stylesheet">
-
-    <title>Hello, world!</title>
+    <title>Ship information</title>
 </head>
 
 <body>
@@ -57,7 +55,7 @@
                             Thông tin giao hàng
                         </li>
 
-                        <li class="breadcrumb-item active">
+                        <li class="breadcrumb-item">
                             Phương thức thanh toán
                         </li>
                     </ul>
@@ -69,7 +67,7 @@
                         <div class="section">
 
                             <div class="section-header">
-                                <h2 class="section-title"> Phương thức vận chuyển </h2>
+                                <h2 class="section-title"> Thông tin giao hàng </h2>
                             </div>
 
                             <div class="section-content section-customer-info">
@@ -80,62 +78,45 @@
 
                             <input type="hidden" name="" value="">
 
-                            <div class="section-content">
-                                <div class="content-box">
-                                    <div class="content-box-row">
-                                        <div class="radio-wrapper">
-                                            <label class="radio-label" for="shipping-rate">
-                                                <div class="radio-input">
-                                                    <input class="input-radio" type="radio" id="shipping-rate-id" name="shipping-rate-id" checked>
-                                                </div>
-                                                <span class="radio-label-primary"> Giao hàng tận nơi</span>
-                                                <span class="radio-accessory content-box-emphasis"> 50.000đ</span>
-                                            </label>
-                                        </div>
+                            <!-- Customer info -->
+                            <div class="logged-in-customer-info">
+                                <!-- avatar -->
+                                <div class="logged-in-customer-info-avatar-wrapper">
+                                    <div class="logged-in-customer-info-avatar gavatar">
+                                        <img width="50px" height="50px" class="avatar" src="https://media.istockphoto.com/vectors/avatar-5-vector-id1131164548?k=20&m=1131164548&s=612x612&w=0&h=ODVFrdVqpWMNA1_uAHX_WJu2Xj3HLikEnbof6M_lccA=">
                                     </div>
                                 </div>
+
+                                <p class="logged-in-customer-info-paragraph">
+                                    <!-- Username (email@email.com)-->
+                                    Hieu Dang (hieuvipsmile123@gmail.com)
+                                    <br>
+                                    <a class="logout-btn" href="#"> Đăng xuất </a>
+                                </p>
                             </div>
 
-                            <div class="section-header">
-                                <h2 class="section-title"> Phương thức thanh toán </h2>
-                            </div>
 
-                            <div class="section-content">
-                                <div class="content-box">
-                                    <div class="content-box-row">
-                                        <div class="radio-wrapper">
-                                            <label class="radio-label" for="ship-type-id">
-                                                <div class="radio-input">
-                                                    <input class="input-radio" type="radio" id="ship-type-id" name="ship-type-id" checked>
-                                                </div>
-                                                <span class="radio-label-primary"> Thanh toán khi giao hàng (COD) </span>
-
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="content-box-row secondary">
-                                        <div class="blank-slate">
-                                            Cảm ơn bạn đã tin dùng mua hàng tại BK Team Chúng tôi sẽ sớm liên hệ với bạn để Xác Nhận Đơn Hàng qua điện thoại trước khi giao hàng!
-                                        </div>
-                                    </div>
+                            <form>
+                                <div class="form-group">
+                                    <label for="address">Địa chỉ</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Thêm địa chỉ mới">
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label for="customer-name">Họ và tên</label>
+                                    <input class="form-control" id="customer-name" placeholder="Trần Văn A">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone-num">Số điện thoại</label>
+                                    <input class="form-control" id="phone-num" type="number" maxlength="11" placeholder="0123456789">
+                                </div>
 
+                            </form>
                             <div class="form-footer">
-                                <a class="cart-link" href="/cart"> Quay lại thông tin giao hàng </a>
+                                <a class="cart-link" href="/cart"> Giỏ hàng </a>
 
                                 <form id="form-next-step" method="post">
-                                    <button class="btn btn-dark next-btn" type="button"> Hoàn tất đơn hàng </button>
+                                    <button class="btn btn-dark next-btn" type="button"> Tiếp tục đến phương thức thanh toán </button>
                                 </form>
-                            </div>
-                        </div>
-
-
-
-                        <div class="section-content section-customer-info">
-                            <div class="inventory-location-data">
-                                <!-- Hidden input ?? -->
                             </div>
                         </div>
 
