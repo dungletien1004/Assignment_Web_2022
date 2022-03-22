@@ -2,113 +2,94 @@
   --title-color: white;
   --text-color: black;
   --width-container: 1170px;
+  --primary-color: linear-gradient(180deg, #ff9b05 0%, #e70e0e 100%);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 .header {
-  position: absolute;
-  width: 100%;
-  height: 60px;
-  left: 0px;
-  top: 0px;
-  background: linear-gradient(180deg, #ff9b05 0%, #e70e0e 100%);
+  height: 80px;
+  background: var(--primary-color);
 }
 .logo {
-  position: absolute;
   width: 282px;
-  height: 60px;
+  height: 80px;
   left: 0px;
   top: 0px;
-
-  background: linear-gradient(180deg, #ff9b05 0%, #e70e0e 100%);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 16px;
 }
 .logo_img {
   position: absolute;
-  width: 64px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   left: 24px;
   top: 8px;
-
-  background: url(image.png);
 }
 .logo_content {
   position: absolute;
   width: 154px;
   height: 16px;
   left: 100px;
+  top: 30px;
 
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 16px;
   /* identical to box height, or 53% */
-  color: var(--title-color);
+  color: black;
+}
+.logo_content span {
+  color: white;
 }
 .login_container {
-  position: absolute;
-  width: var(--width-container);
+  width: 90%;
   height: 505px;
-  left: 90px;
-  top: 100px;
-
+  display: flex;
+  margin-top: 30px;
+  margin-left: 5%;
   background: #ffffff;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
 .login_content {
   width: 50%;
-  background-color: lightblue;
+  height: 100%;
 }
 .group_title {
-}
-.title_login {
-  position: absolute;
-  width: 234px;
-  height: 40px;
-  left: 270px;
-  top: 40px;
-
-  font-family: "Poppins";
-  font-style: normal;
+  display: flex;
+  float: right;
+  width: 50%;
+  margin-top: 30px;
   font-weight: 500;
   font-size: 25px;
   line-height: 16px;
-  /* or 53% */
-
+  font-style: normal;
+}
+.title_login {
   color: #fe1e00;
 }
 .title_signup {
-  position: absolute;
-  width: 234px;
-  height: 40px;
-  left: 420px;
-  top: 40px;
-
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 16px;
-  /* or 53% */
-
+  margin-left: 10%;
   color: #4f5455;
 }
 .login_title {
-  position: absolute;
   width: 234px;
   height: 40px;
-  left: 100px;
-  top: 150px;
-
-  font-family: "Poppins";
+  margin-top: 100px;
+  margin-left: 10%;
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 40px;
   line-height: 16px;
-  /* or 40% */
-
   color: #000000;
 }
 .login_input {
+  width: 70%;
+  height: 190px;
+  margin-left: 10%;
 }
 :focus {
   outline: none;
@@ -116,14 +97,12 @@
 
 .col-3 {
   float: left;
-  width: 400px;
-  top: 160px;
-  left: 100px;
+  width: 100%;
   margin-top: 50px;
   position: relative;
 } /* necessary to give position: relative to parent. */
 input[type="text"] {
-  font-size: 12px;
+  font-size: 20px;
   font-weight: lighter;
   font-family: "Helvetica Neue";
   color: var(--text-color);
@@ -160,31 +139,24 @@ input[type="password"] {
 }
 ::placeholder {
   color: #939393;
-  font-size: 12px;
+  font-size: 20px;
 }
 .reset_pass {
-  position: absolute;
-  width: 179px;
   height: 16px;
-  left: 390px;
-  top: 320px;
-
-  font-family: "Roboto";
+  float: right;
+  margin-top: 10px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height, or 67% */
-
   color: #fe1e00;
+  margin-top: 10px;
 }
 .login_button {
-  position: absolute;
-  width: 400px;
-  height: 50px;
-  left: 100px;
-  top: 380px;
-
+  width: 70%;
+  height: 80px;
+  margin-left: 10%;
+  margin-top: 30px;
   background: linear-gradient(
     88.71deg,
     rgba(255, 155, 5, 0.98) 0%,
@@ -201,18 +173,15 @@ input[type="password"] {
   );
 }
 .button_text {
-  margin-top: 15px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 40px;
   line-height: 16px;
   /* identical to box height, or 40% */
 
   color: #ffffff;
 }
 .login_img {
-  position: absolute;
   width: 50%;
   height: 505px;
   left: 585px;
@@ -225,9 +194,59 @@ input[type="password"] {
   border-radius: 0 10px 10px 0;
 }
 .img_logo {
-  position: absolute;
-  width: 577px;
+  width: 90%;
   height: 460px;
-  left: 20px;
-  top: 50px;
+  margin-left: 10%;
+}
+@media screen and (max-width: 1024px) {
+  .group_title {
+    font-size: 20px;
+  }
+  .login_title {
+    font-size: 35px;
+  }
+  .login_button {
+    height: 70px;
+  }
+  .button_text {
+    font-size: 35px;
+  }
+  .group_title {
+    width: 60%;
+  }
+  .img_logo {
+    width: 300px;
+    height: 400px;
+    margin-top: 10%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .group_title {
+    font-size: 16px;
+  }
+  .login_title {
+    font-size: 30px;
+  }
+  .group_title {
+    width: 45%;
+  }
+  .reset_pass {
+    font-size: 12px;
+  }
+  .login_content {
+    width: 100%;
+  }
+  .login_img {
+    display: none;
+  }
+  .button_text {
+    font-size: 30px;
+  }
+  .login_button {
+    height: 60px;
+  }
+  ::placeholder {
+    color: #939393;
+    font-size: 14px;
+  }
 }
