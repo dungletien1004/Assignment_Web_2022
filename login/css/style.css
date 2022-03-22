@@ -1,0 +1,233 @@
+:root {
+  --title-color: white;
+  --text-color: black;
+  --width-container: 1170px;
+}
+.header {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(180deg, #ff9b05 0%, #e70e0e 100%);
+}
+.logo {
+  position: absolute;
+  width: 282px;
+  height: 60px;
+  left: 0px;
+  top: 0px;
+
+  background: linear-gradient(180deg, #ff9b05 0%, #e70e0e 100%);
+}
+.logo_img {
+  position: absolute;
+  width: 64px;
+  height: 50px;
+  left: 24px;
+  top: 8px;
+
+  background: url(image.png);
+}
+.logo_content {
+  position: absolute;
+  width: 154px;
+  height: 16px;
+  left: 100px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 16px;
+  /* identical to box height, or 53% */
+  color: var(--title-color);
+}
+.login_container {
+  position: absolute;
+  width: var(--width-container);
+  height: 505px;
+  left: 90px;
+  top: 100px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.login_content {
+  width: 50%;
+  background-color: lightblue;
+}
+.group_title {
+}
+.title_login {
+  position: absolute;
+  width: 234px;
+  height: 40px;
+  left: 270px;
+  top: 40px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 16px;
+  /* or 53% */
+
+  color: #fe1e00;
+}
+.title_signup {
+  position: absolute;
+  width: 234px;
+  height: 40px;
+  left: 420px;
+  top: 40px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 16px;
+  /* or 53% */
+
+  color: #4f5455;
+}
+.login_title {
+  position: absolute;
+  width: 234px;
+  height: 40px;
+  left: 100px;
+  top: 150px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 16px;
+  /* or 40% */
+
+  color: #000000;
+}
+.login_input {
+}
+:focus {
+  outline: none;
+}
+
+.col-3 {
+  float: left;
+  width: 400px;
+  top: 160px;
+  left: 100px;
+  margin-top: 50px;
+  position: relative;
+} /* necessary to give position: relative to parent. */
+input[type="text"] {
+  font-size: 12px;
+  font-weight: lighter;
+  font-family: "Helvetica Neue";
+  color: var(--text-color);
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  background-color: #ffffff;
+}
+input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  background-color: #ffffff;
+}
+
+.effect-1 {
+  border: 0;
+  padding: 7px 0;
+  border-bottom: 2px solid #2ab5e1;
+}
+
+.effect-1 ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fe1e00;
+  transition: 1s;
+}
+.effect-1:focus ~ .focus-border {
+  width: 100%;
+  transition: 0.4s;
+}
+::placeholder {
+  color: #939393;
+  font-size: 12px;
+}
+.reset_pass {
+  position: absolute;
+  width: 179px;
+  height: 16px;
+  left: 390px;
+  top: 320px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  /* identical to box height, or 67% */
+
+  color: #fe1e00;
+}
+.login_button {
+  position: absolute;
+  width: 400px;
+  height: 50px;
+  left: 100px;
+  top: 380px;
+
+  background: linear-gradient(
+    88.71deg,
+    rgba(255, 155, 5, 0.98) 0%,
+    rgba(231, 14, 14, 0.529583) 96.88%
+  );
+  border-radius: 10px;
+  border: none;
+}
+.login_button:hover {
+  background: linear-gradient(
+    88.71deg,
+    #05ffff 0%,
+    rgba(0, 117, 255, 0.529583) 96.88%
+  );
+}
+.button_text {
+  margin-top: 15px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 16px;
+  /* identical to box height, or 40% */
+
+  color: #ffffff;
+}
+.login_img {
+  position: absolute;
+  width: 50%;
+  height: 505px;
+  left: 585px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 155, 5, 0.98) 0%,
+    rgba(231, 14, 14, 0.51) 100%
+  );
+  border-radius: 0 10px 10px 0;
+}
+.img_logo {
+  position: absolute;
+  width: 577px;
+  height: 460px;
+  left: 20px;
+  top: 50px;
+}
