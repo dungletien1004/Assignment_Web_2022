@@ -157,20 +157,18 @@ input[type="password"] {
   height: 80px;
   margin-left: 10%;
   margin-top: 30px;
-  background: linear-gradient(
+  background-color: red;
+  background-image: linear-gradient(
     88.71deg,
     rgba(255, 155, 5, 0.98) 0%,
     rgba(231, 14, 14, 0.529583) 96.88%
   );
   border-radius: 10px;
   border: none;
+  transition: all 2s ease;
 }
 .login_button:hover {
-  background: linear-gradient(
-    88.71deg,
-    #05ffff 0%,
-    rgba(0, 117, 255, 0.529583) 96.88%
-  );
+  background-color: rgb(153, 0, 255);
 }
 .button_text {
   font-style: normal;

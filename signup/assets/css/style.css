@@ -1,0 +1,253 @@
+:root {
+  --title-color: white;
+  --text-color: black;
+  --width-container: 1170px;
+  --primary-color: linear-gradient(180deg, #ff9b05 0%, #e70e0e 100%);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+.header {
+  height: 80px;
+  background: var(--primary-color);
+}
+.logo {
+  width: 282px;
+  height: 80px;
+  left: 0px;
+  top: 0px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 16px;
+}
+.logo_img {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 24px;
+  top: 8px;
+}
+.logo_content {
+  position: absolute;
+  width: 154px;
+  height: 16px;
+  left: 100px;
+  top: 30px;
+
+  /* identical to box height, or 53% */
+  color: black;
+}
+.logo_content span {
+  color: white;
+}
+.login_container {
+  width: 90%;
+  height: 505px;
+  display: flex;
+  margin-top: 30px;
+  margin-left: 5%;
+  background: #ffffff;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.login_content {
+  width: 50%;
+  height: 100%;
+}
+.group_title {
+  display: flex;
+  float: right;
+  width: 50%;
+  margin-top: 30px;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 16px;
+  font-style: normal;
+}
+.title_login {
+  color: #4f5455;
+}
+.title_signup {
+  margin-left: 10%;
+  color: #fe1e00;
+}
+.login_title {
+  width: 234px;
+  height: 40px;
+  margin-top: 65px;
+  margin-left: 10%;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 16px;
+  color: #000000;
+}
+.form_signup {
+  margin-top: -20px;
+}
+.login_input {
+  width: 70%;
+  height: 190px;
+  margin-left: 10%;
+}
+:focus {
+  outline: none;
+}
+
+.col-3 {
+  float: left;
+  width: 100%;
+  height: 30px;
+  margin-top: 30px;
+  position: relative;
+} /* necessary to give position: relative to parent. */
+input[type="text"],
+input[type="password"] {
+  font-size: 20px;
+  font-weight: lighter;
+  font-family: "Helvetica Neue";
+  color: var(--text-color);
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  background-color: #ffffff;
+}
+.form-message {
+  font-size: 12px;
+  color: #fe1e00;
+}
+
+.effect-1 {
+  border: 0;
+  padding: 7px 0;
+  border-bottom: 2px solid #2ab5e1;
+}
+
+.effect-1 ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  top: 37px;
+  height: 2px;
+  background-color: #fe1e00;
+  transition: 1s;
+}
+.effect-1:focus ~ .focus-border {
+  width: 100%;
+  transition: 0.4s;
+}
+::placeholder {
+  color: #939393;
+  font-size: 20px;
+}
+.confirm {
+  float: left;
+  margin-top: 30px;
+  margin-left: 10%;
+  color: #fe1e00;
+  font-size: 16px;
+}
+.login_button {
+  width: 70%;
+  height: 60px;
+  margin-left: 10%;
+  margin-top: 30px;
+  background-color: red;
+  background-image: linear-gradient(
+    88.71deg,
+    rgba(255, 155, 5, 0.98) 0%,
+    rgba(231, 14, 14, 0.529583) 96.88%
+  );
+  border-radius: 10px;
+  border: none;
+  transition: background-color 2s ease;
+}
+.login_button:hover {
+  background-color: rgb(153, 0, 255);
+}
+input[type="submit"],
+.button_text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 16px;
+  /* identical to box height, or 40% */
+
+  color: #ffffff;
+}
+.login_img {
+  width: 50%;
+  height: 505px;
+  left: 585px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 155, 5, 0.98) 0%,
+    rgba(231, 14, 14, 0.51) 100%
+  );
+  border-radius: 0 10px 10px 0;
+}
+.img_logo {
+  width: 90%;
+  height: 460px;
+  margin-left: 10%;
+}
+@media screen and (max-width: 1024px) {
+  .group_title {
+    font-size: 20px;
+  }
+  .login_title {
+    font-size: 35px;
+  }
+  .login_button {
+    height: 70px;
+  }
+  input[type="submit"],
+  .button_text {
+    font-size: 35px;
+  }
+  .group_title {
+    width: 60%;
+  }
+  .img_logo {
+    width: 300px;
+    height: 400px;
+    margin-top: 10%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .group_title {
+    font-size: 14px;
+  }
+  .login_title {
+    font-size: 30px;
+  }
+  .group_title {
+    width: 45%;
+  }
+  .confirm {
+    font-size: 12px;
+  }
+  .login_content {
+    width: 100%;
+  }
+  .login_img {
+    display: none;
+  }
+  input[type="submit"],
+  .button_text {
+    font-size: 25px;
+  }
+  .login_button {
+    height: 50px;
+  }
+  ::placeholder {
+    color: #939393;
+    font-size: 14px;
+  }
+}

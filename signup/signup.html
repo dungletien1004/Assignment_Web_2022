@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Sign up Page</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <img src="./assets/img/clothes.png" alt="" class="logo_img" />
+        <a href="./login.html" class="link"
+          ><div class="logo_content">BKU <span>Team</span></div></a
+        >
+      </div>
+    </div>
+    <div class="login_container">
+      <div class="login_content">
+        <div class="group_title">
+          <p class="title_login">Đăng nhập</p>
+          <p class="title_signup">Đăng ký</p>
+        </div>
+        <div class="login_title">Đăng ký</div>
+        <form action="" class="form_signup" id="form-1">
+          <div class="login_input">
+            <div class="col-3">
+              <input
+                class="effect-1"
+                type="text"
+                placeholder="Họ và tên"
+                id="fullname"
+              />
+              <span class="focus-border"></span>
+              <span class="form-message"></span>
+            </div>
+            <div class="col-3">
+              <input
+                class="effect-1"
+                type="text"
+                placeholder="Tên đăng nhập"
+                id="username"
+              />
+              <span class="focus-border"></span>
+              <span class="form-message"></span>
+            </div>
+            <div class="col-3">
+              <input
+                class="effect-1"
+                type="password"
+                placeholder="Mật khẩu"
+                id="pass"
+              />
+              <span class="focus-border"></span>
+              <span class="form-message"></span>
+            </div>
+            <div class="col-3">
+              <input
+                class="effect-1"
+                type="password"
+                placeholder="Nhập lại mật khẩu"
+                id="re-pass"
+              />
+              <span class="focus-border"></span>
+              <span class="form-message"></span>
+            </div>
+          </div>
+          <div class="confirm">
+            <input type="checkbox" name="checkbox" id="checkbox" />
+            <label for="checkbox">Tôi đồng ý với điều khoản</label><br />
+          </div>
+
+          <button class="login_button">
+            <p class="button_text">Đăng Ký</p>
+          </button>
+        </form>
+      </div>
+      <div class="login_img">
+        <img src="./assets/img/logo.png" alt="" class="img_logo" />
+      </div>
+    </div>
+    <script src="./assets/js/signup.js"></script>
+    <script>
+      Validator({
+        form: "#form-1",
+        error: ".form-message",
+        rules: [
+          Validator.isRequired("#fullname"),
+          Validator.isUsername("#username"),
+          Validator.isPass("#pass", 6),
+          Validator.isConfirmed(
+            "#re-pass",
+            function () {
+              return document.querySelector("#form-1 #pass").value;
+            },
+            "Mật khẩu không trùng khớp"
+          ),
+        ],
+      });
+    </script>
+  </body>
+</html>
