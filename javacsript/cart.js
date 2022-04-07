@@ -1,8 +1,8 @@
 /* CartItem: Id id of product,
         name : string
         size: array of string that can be: {S, M , L , XL , XLL}  */
-class CartItem {
 
+class CartItem {
     constructor(id, name, unitPrice, size, imgUrl, quantity, productURL) {
         this.id = id;
         this.name = name;
@@ -35,25 +35,25 @@ class CartItem {
 // }
 
 // example data in customer's cart! NOT REAL DATA.
-const cart_data = [
-    new CartItem(
-        0,
-        'HOODIE BASIC / GREY - GREEN',
-        159000, 'M',
-        'https://product.hstatic.net/200000260587/product/hardmode-hoodie_emb_logo_huskies_gold_1_0b83b15759f8484382fadca6d3437da7_master.jpg',
-        2,
-        '#', // product URL
+// const cart_data = [
+//     new CartItem(
+//         0,
+//         'HOODIE BASIC / GREY - GREEN',
+//         159000, 'M',
+//         'https://product.hstatic.net/200000260587/product/hardmode-hoodie_emb_logo_huskies_gold_1_0b83b15759f8484382fadca6d3437da7_master.jpg',
+//         2,
+//         '#', // product URL
 
-    ),
-    new CartItem(
-        1,
-        'HUMMING BIRD HOODIE / BLUE',
-        159000, 'L',
-        'https://product.hstatic.net/200000260587/product/c40dd138-2027-460e-bcdb-fbdf7d7f8964_38e5042db7314c8b85f26a4edaa85be1_master.jpeg',
-        1,
-        '#', // product URL
-    )
-]
+//     ),
+//     new CartItem(
+//         1,
+//         'HUMMING BIRD HOODIE / BLUE',
+//         159000, 'L',
+//         'https://product.hstatic.net/200000260587/product/c40dd138-2027-460e-bcdb-fbdf7d7f8964_38e5042db7314c8b85f26a4edaa85be1_master.jpeg',
+//         1,
+//         '#', // product URL
+//     )
+// ]
 
 
 
@@ -67,12 +67,12 @@ function getTotalPrice() {
 
 let cart_existed = cart_data.length > 0;
 
-if (cart_existed) {
-    genCartTable();
-    genTotalCart();
-} else {
-    genEmptyCart();
-}
+// if (cart_existed) {
+//     genCartTable();
+//     genTotalCart();
+// } else {
+//     genEmptyCart();
+// }
 
 function genTableHeading() {
     let table_head = document.createElement('thead');
