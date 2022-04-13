@@ -30,12 +30,12 @@ if (!$query_res) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="./javacsript/cart.js" type="text/javascript" async>
-
+    <script src="./javascript/cart.js" type="text/javascript" async>
     </script>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="font-awesome-4.7.0\font-awesome-4.7.0\css\font-awesome.min.css">
     <link href="./css/cart-table.css" type="text/css" rel="stylesheet">
 
@@ -60,7 +60,8 @@ if (!$query_res) {
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                                    <li class="breadcrumb-item active" id="cart-breadcrumb" aria-current="page">Giỏ hàng</li>
+                                    <li class="breadcrumb-item active" id="cart-breadcrumb" aria-current="page">Giỏ hàng
+                                    </li>
                                 </ol>
                             </nav>
                         </div>
@@ -96,6 +97,7 @@ if (!$query_res) {
 
                                                 <tbody>
                                                     <?php
+                                                    $total = 0;
                                                     while ($row = mysqli_fetch_assoc($query_res)) {
                                                         $product_id = (int) $row["customerID"];
                                                         $quantity = (int) $row["quantity"];
@@ -104,33 +106,60 @@ if (!$query_res) {
                                                         $unit_price = (int) $row["unit_price"];
                                                         $total_price = $quantity * $unit_price;
                                                         $size = $row["size"];
+                                                        $total += $total_price;
                                                     ?>
                                                     <tr data_id="<?php echo $product_id ?>" class="line-item-container">
                                                         <td class="image">
                                                             <div class="product-image">
                                                                 <a href="#prodcut_page_here" class="thumb-cart">
-                                                                    <img src="<?php echo $product_img?>" alt="<?php echo $product_name?>">
-                                                                    <h3><?php echo $product_name?></h3>
-                                                                    <span><?php echo $unit_price?> đ</span>
+                                                                    <img src="<?php echo $product_img ?>"
+                                                                        alt="<?php echo $product_name ?>">
+                                                                    <h3><?php echo $product_name ?></h3>
+                                                                    <span><?php echo $unit_price ?> đ</span>
                                                                 </a>
-                                                                
+
                                                             </div>
                                                             <p class="variant">
                                                                 <span class="variant-title">
-                                                                    <?php echo $size?>
+                                                                    <?php echo $size ?>
                                                                 </span>
                                                             </p>
-                                                            
+
                                                         </td>
 
                                                         <td class="qty">
                                                             <div class="qty qty-click">
-                                                                <button class="btn" type="button" class="btn btn-light qtyminus qty-btn">-</button>
+                                                                <button type="button"
+                                                                    class="btn btn-light qtyminus qty-btn">-</button>
+                                                                <input type="number" size="4" name="updates[]" min="1"
+                                                                    id="updates_<?php echo $product_id; ?>">
+                                                                <?php echo  $quantity ?>
+                                                                </input>
+                                                                <button type="button"
+                                                                    class="btn btn-light qtyplus qty-btn">+</button>
                                                             </div>
                                                         </td>
+
+                                                        <td class="linePrice">
+                                                            <p class="price">
+                                                                <span class="line-item-total">
+                                                                    <?php
+                                                                        echo $total_price;
+                                                                        ?> đ
+                                                                </span>
+                                                            </p>
+                                                        </td>
+
+                                                        <td class="remove">
+                                                            <a class="cart">
+                                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                            </a>
+                                                        </td>
                                                     </tr>
+                                                    <?php
                                                     }
-                                                    
+                                                    ?>
+
                                                 </tbody>
 
                                             </table>
@@ -138,7 +167,32 @@ if (!$query_res) {
 
                                         <div class="col-md-4 col-sm-12 col-xs-12 text-center" id="total">
                                             <!-- Cart info goes here, which includes: total price, checkout .....-->
+                                            <div class="total-cart">
+                                                <p class="order-info">
+                                                    Tổng tiền
+                                                    <span class="total_price">
+                                                        <b>
+                                                            <?php
+                                                            echo $total;
 
+                                                            ?>
+                                                        </b>
+                                                    </span>
+                                                </p>
+
+                                                <div class="cart-buttons">
+                                                    <button type="submit" id="checkout" class="btn btn-dark"
+                                                        name="checkout">
+                                                        Thanh toán
+                                                    </button>
+                                                </div>
+
+                                                <div class="checkout-note clearfix">
+                                                    <textarea id="note" name="note" placeholder="Ghi chú">
+
+                                                    </textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -155,7 +209,9 @@ if (!$query_res) {
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
