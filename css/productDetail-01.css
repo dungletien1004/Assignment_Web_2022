@@ -158,6 +158,10 @@ html {
     width: 30%;
 }
 
+#product-slave-img-01{
+    border: 1.5px black solid;
+}
+
 .middle-right-collum{
     float: right;
     margin-top: 20px;
@@ -320,6 +324,14 @@ html {
     font-size: 150%;
     font-weight: bolder;
     margin: 15px 0px;
+    word-wrap: break-word;
+}
+
+.product-decription{
+    color: black;
+    font-size: 70%;
+    font-weight: lighter;
+    word-wrap: break-word;
 }
 
 .middle-bottom{
@@ -352,30 +364,13 @@ html {
 .product-name{
     color: black;
     font-weight: 700;
-    font-size: 120%;
+    font-size: 100%;
     margin: 7px 0px;
 }
 
-/* .product-review{
-    margin: 7px 20px;
-}
-
-.sold{
-    float: left;
-    font-weight: 500;
-    font-size: 100%;
-}
-
-.star{
-    color: #E7D000;
-    float: right;
-    font-size: 70%;
-    margin-top: 3px;
-} */
-
 .product-price{
     font-weight: 700;
-    font-size: 120%;
+    font-size: 110%;
     margin: 7px 0px;
 }
 

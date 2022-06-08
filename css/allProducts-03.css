@@ -234,7 +234,7 @@ html {
     margin: 10px;
     position: relative;
     text-align: center;
-    width: 23%;
+    width: 22%;
 }
 
 .product-item a{
@@ -245,33 +245,66 @@ html {
     width: 100%;
 }
 
+.edit{
+    color: white;
+    cursor: pointer;
+    font-size: 130%;
+    opacity: 0;
+    position: absolute;
+    top: 32%;
+    left: 55%;
+    text-decoration: none;
+    transform: translate(-65%, -200%);
+    transition: all .5s;
+}
+
+.delete{
+    color: white;
+    cursor: pointer;
+    font-size: 130%;
+    margin-top: 5px;
+    opacity: 0;
+    position: absolute;
+    top: 45%;
+    left: 52%;
+    text-decoration: none;
+    transform: translate(-65%, 100%);
+    transition: all .5s;
+}
+
+.product-item:hover img,
+.product-item:active img{
+    filter: brightness(30%) blur(2px);
+}
+
+.product-item:hover .edit,
+.product-item:active .edit,
+.product-item:hover .delete,
+.product-item:active .delete{
+    transform: translate(-65%, -50%);
+    opacity: 1;
+}
+
+.edit:hover,
+.edit:active{
+    color: #EBDF00;
+}
+
+.delete:hover,
+.delete:active{
+    color: #EC0202;
+}
+
 .product-name{
     color: black;
     font-weight: 700;
-    font-size: 120%;
+    font-size: 100%;
     margin: 7px 0px;
 }
 
-/* .product-review{
-    margin: 7px 20px;
-}
-
-.sold{
-    float: left;
-    font-weight: 500;
-    font-size: 100%;
-}
-
-.star{
-    color: #E7D000;
-    float: right;
-    font-size: 70%;
-    margin-top: 3px;
-} */
-
 .product-price{
     font-weight: 700;
-    font-size: 120%;
+    font-size: 110%;
     margin: 7px 0px;
 }
 
@@ -296,58 +329,6 @@ html {
     color: #ffffff;
     font-weight: 700;
     font-size: 120%;
-}
-
-.edit-container{
-    height: 9%;
-    left: 250px;
-    position: absolute;
-    text-align: center;
-    top: -2px;
-    width: 10%;
-}
-
-#edit-sysbol{
-    box-shadow: none;
-    color: black;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 200%;
-}
-
-#edit-sysbol:hover,
-#edit-sysbol:active{
-    color: #838181;
-}
-
-.edit-dropdown-menu{
-    border-radius: 10px;
-    border: 2px solid #e5e5e5;
-    background-color: #dfe0e1;
-    display: none;
-    position: absolute;
-    top: 50px;
-    right: 0px;
-}
-
-.delete,
-.edit{
-    border-radius: 10px;
-    color: black;
-    cursor: pointer;
-    display: block;
-    font-size: 100%;
-    padding: 10px 20px;
-    text-align: left;
-    text-decoration: none;
-    width: 170px;
-}
-
-.delete:hover,
-.delete:active,
-.edit:hover,
-.edit:active{
-    background-color: #f1f1f1;
 }
 
 .next-page{

@@ -160,6 +160,10 @@ html {
     width: 30%;
 }
 
+#product-slave-img-01{
+    border: 1.5px black solid;
+}
+
 .edit-container{
     height: 9%;
     left: 450px;
@@ -236,6 +240,7 @@ html {
 .product-input{
     background-color: #C4C4C4;
     border: none;
+    border-radius: 5px;
     color: black;
     font-size: 140%;
     margin-left: 20px;
@@ -244,9 +249,35 @@ html {
     z-index: 1000;
 }
 
+.product-type{
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+#product-type{
+    cursor: pointer;
+    font-size: 110%;
+}
+
 #product-decription{
     margin-top: 10px;
     margin-left: 0px;
+    word-wrap: break-word;
+}
+
+#product-img-02::-webkit-file-upload-button{
+    background-color: rgba(255, 0, 0, 0.9);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 80%;
+}
+
+#product-img-02{
+    background-color: white;
+    color: red;
+    cursor: pointer;
+    width: 70%;
 }
 
 .product-label{

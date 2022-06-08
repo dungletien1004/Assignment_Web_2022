@@ -61,6 +61,12 @@ function closeChangeImg(){
 }
 
 function caculate(){
-    var tmp = (Number(decreasePrice.value)/Number(price.value))*100;
-    sale.innerHTML = String(tmp) + '%';
+    var tmp = 100 - ((Number(decreasePrice.value)/Number(price.value))*100);
+    var temp = tmp.toFixed();
+    if ((decreasePrice.value == 0) || (Number(decreasePrice.value) == Number(price.value))){
+        sale.innerHTML = '0%';
+    }
+    else{
+        sale.innerHTML = '-' + String(temp) + '%';
+    }
 }

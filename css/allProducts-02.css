@@ -234,7 +234,7 @@ html {
     margin: 10px;
     position: relative;
     text-align: center;
-    width: 23%;
+    width: 22%;
 }
 
 .product-item a{
@@ -242,36 +242,40 @@ html {
 }
 
 .product-img{
+    cursor: pointer;
     width: 100%;
+}
+
+.product-img-out{
+    cursor: pointer;
+    filter: brightness(60%) blur(2px);
+    width: 100%;
+}
+
+.sold-out{
+    color: #ff1818;
+    cursor: pointer;
+    font-size: 200%;
+    font-weight: bold;
+    position: absolute;
+    top: 80%;
+    left: 55%;
+    text-decoration: none;
+    transform: translate(-65%, -200%);
+    transition: all .5s;
 }
 
 .product-name{
     color: black;
+    cursor: pointer;
     font-weight: 700;
-    font-size: 120%;
+    font-size: 100%;
     margin: 7px 0px;
 }
 
-/* .product-review{
-    margin: 7px 20px;
-}
-
-.sold{
-    float: left;
-    font-weight: 500;
-    font-size: 100%;
-}
-
-.star{
-    color: #E7D000;
-    float: right;
-    font-size: 70%;
-    margin-top: 3px;
-} */
-
 .product-price{
     font-weight: 700;
-    font-size: 120%;
+    font-size: 110%;
     margin: 7px 0px;
 }
 

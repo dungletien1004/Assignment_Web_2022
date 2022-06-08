@@ -14,7 +14,6 @@ var bags = document.querySelector('.menu-bags');
 var bagsIcon = document.querySelector('#bags-icon');
 var bagsHr = document.querySelector('.bags-hr');
 var userMenu = document.querySelector('.user-dropdown-menu');
-var editMenu = document.querySelector('.edit-dropdown-menu');
 var confirmDelete = document.querySelector('.confirm-delete-modal')
 
 function allClick() {
@@ -113,14 +112,6 @@ function userHover(){
 
 function userLeave(){
     userMenu.style.display = 'none';
-}
-
-function editHover(){
-    editMenu.style.display = 'block';
-}
-
-function editLeave(){
-    editMenu.style.display = 'none';
 }
 
 function openConfirmDelete() {
