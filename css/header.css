@@ -1,5 +1,5 @@
 .header {
-    background: var(--primary-color);
+    background: #E70E0E;
     height: 80px;
     right: 0;
     top: 0;
@@ -12,6 +12,7 @@
     z-index: 5;
    
 }
+
 .logo a{
     display: flex;
     align-items: center;
