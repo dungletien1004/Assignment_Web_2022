@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/index.css">
     <!-- <link rel="stylesheet" href="./assets/css/home.css"> -->
     
     <title>Fashion Shop</title>
@@ -106,9 +106,8 @@
 
     
     <!-- ORDER -->
-    <div class="order">
-        <div class="heading-order">ĐẶT HÀNG</div>
-        <h4>Bạn có thể đặt hàng mà không cần đăng kí tài khoản</h4>
+    <div class="contact">
+        <div class="heading-contact">LIÊN HỆ</div>
         <form action="" method="POST">
             <div class="box-container">
 
@@ -118,12 +117,8 @@
                         <input name="name" id="name" type="text" placeholder="Nhập tên...">
                     </div>
                     <div class="input-data">
-                        <label for="name">Tên sản phẩm:</label>
-                        <input name="product" id="product" type="text" placeholder="Nhập sản phẩm...">
-                    </div>
-                    <div class="input-data">
-                        <label for="note">Ghi chú kèm theo:</label>
-                        <input name="note" id="note" type="text" placeholder="Nhập ghi chú...">
+                        <label for="note">Lời nhắn:</label>
+                        <input name="note" id="note" type="text" placeholder="Nhập lời nhắn...">
                     </div>
                     <div class="input-data">
                         <label for="address">Địa chỉ:</label>
@@ -131,10 +126,6 @@
                     </div>
                 </div>
                 <div class="box">
-                    <div class="input-data">
-                        <label for="number">Số lượng sản phẩm:</label>
-                        <input name="number" id="number" type="number" placeholder="Nhập số lượng...">
-                    </div>
                     <div class="input-data">
                         <label for="phone">Số điện thoại:</label>
                         <input name="phone" id="phone" type="text" placeholder="Nhập số điện thoại...">
@@ -150,7 +141,7 @@
                     
                 </div>
             </div>
-            <button type="submit" class="submitOrder">Gửi đơn hàng</button>
+            <button type="submit" class="submitContact">Gửi liên hệ</button>
         </form>
 
     </div>

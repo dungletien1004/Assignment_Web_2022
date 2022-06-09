@@ -10,13 +10,13 @@
     color: #A3A3A3;
     font-size: 1.6rem;
 }
-.contact {
+.footer-contact {
     display: flex;
     flex-direction: column;
     margin-right: 20px;
     margin-bottom: 30px;
 }
-.contact span {
+.footer-contact span {
     margin-bottom: 4px;
 }
 .col-footer {

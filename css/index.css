@@ -303,8 +303,8 @@ html::-webkit-scrollbar-thumb {
 
 
 
-/* ---------------ORDER----------- */
-.heading-order {
+/* ---------------contact----------- */
+.heading-contact {
     font-size: 4.8rem;
     color: white;
     font-weight: 500;
@@ -313,20 +313,20 @@ html::-webkit-scrollbar-thumb {
     margin: 40px 0;
     
 }
-.order h4 {
+.contact h4 {
     text-align: center;
     font-weight: 300;
     color: white;
     margin-top: -20px;
 }
-.order {
+.contact {
     background: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.order form {
+.contact form {
     padding: 12px;
     background: white;
     width:90%;
@@ -340,16 +340,16 @@ html::-webkit-scrollbar-thumb {
     flex-wrap: wrap;
     
 }
-.order .box {
+.contact .box {
     flex: 1 1 41rem;
 }
-.order .input-data {
+.contact .input-data {
     margin: 12px;
 }
-.order .input-data label {
+.contact .input-data label {
     font-weight: 400;
 }
-.order .input-data input {
+.contact .input-data input {
     width: 100%;
     color: #444;
     border: 1px solid #444;
@@ -358,14 +358,14 @@ html::-webkit-scrollbar-thumb {
     
     font-weight: 300;
 }
-.order .input-data input:hover {
+.contact .input-data input:hover {
     outline: none;
 }
 
 .input-data iframe {
     width: 100%;
 }
-.submitOrder, .viewProduct {
+.submitContact, .viewProduct {
     background: var(--primary-color);
     padding: 12px 16px;
     color: white;

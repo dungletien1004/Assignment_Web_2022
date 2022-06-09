@@ -1,10 +1,10 @@
 <div class="footer container">
         <div class="row">
             <div class="col-sm-6 col-footer">
-                <div class="contact">
+                <div class="footer-contact">
                     <div class="logo">
-                        <a href="./index.html">
-                            <img src="./img/Logo.png" alt="">
+                        <a href="index.php">
+                            <img src="img/Logo.png" alt="">
                             <div class="logo-text">
                                 <span style="color:#E70E0E">BKU </span> <span>Team</span>
                             </div>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="download">
                     <span>Tải ứng dụng</span>
-                    <a href="#"><img src="./assets/img/QRcode.png" alt=""></a>
+                    <a href="#"><img src="img/QRcode.png" alt=""></a>
                     
                 </div>
             </div>
