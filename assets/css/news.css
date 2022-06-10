@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+:root {
+    --primary-color: linear-gradient(#FF9B05, #E70E0E);
+    --secondary-color: rgb(232, 13, 13);
+}
+html {
+    font-size: 62.5%;
+    text-decoration: none;
+    
+}
+ul {
+    list-style: none;
+}
+a {
+    color: inherit;
+}
+a:hover {
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.8;
+}
+button:hover {
+    opacity: 0.8;
+}
+.icon {
+    -webkit-text-stroke: 0.1rem white;
+    color: rgba(0, 0, 0, 0.1);
+    font-size: 2.4rem;
+}
+.icon:hover {
+    color: white;
+    opacity: 1;
+}
+html::-webkit-scrollbar {
+    width: 1rem;
+}
+html::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5rem;
+}
+/* ------------------ NEWS ------------------------ */
+.heading {
+    font-size: 4.8rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin: 40px 0;
+}
+.brand {
+    color: black;
+    font-size: 3.2rem;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+hr {
+    border-top: 1px solid black;
+    width: 30%;
+    margin-top: -6px;
+    transition: width linear 0.3s;
+}
+.brand:hover hr {
+    width: 40%;
+}
+
+.news-item {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.image {
+    overflow: hidden;
+}
+.news-item img {
+    width: 100%;
+    transition: all linear 0.2s;
+}
+.news-item img:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+.content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.content h2 {
+    font-weight: 400;
+    font-size: 2.8rem;
+    height: 60px;
+}
+.content p {
+    font-weight: 300;
+    text-align: justify;
+    height: 40px;
+}
+.content h2, p {
+    
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+button {
+    background: var(--primary-color);
+    height: 50px;
+    width: 150px;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 2rem;
+    margin: 12px auto 0;
+}
