@@ -12,12 +12,12 @@ $query = "SELECT `size`, `product_image`,`name`, `customerID`, `email`, `fullnam
  JOIN `product_in_cart` on (`cart`.`cart_id` = `product_in_cart`.`cart_cart_id`)) JOIN `products` ON `products`.`product_id` = `product_in_cart`.`products_product_id1`;";
 
 $query_res = mysqli_query($conn, $query);
+
 if (!$query_res) {
     $message  = 'Invalid query: ' . mysqli_error($conn) . '<br>';
     $message .= 'Whole query: ' . $query;
     die($message);
 }
-
 ?>
 
 <!doctype html>
@@ -29,9 +29,7 @@ if (!$query_res) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="./javascript/cart.js" type="text/javascript" async>
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -75,12 +73,12 @@ if (!$query_res) {
                         <div class="header-page text-left">
                             <h1> GIỎ HÀNG </h1>
                         </div>
-                    </div>
+                    </div>2
 
                     <div class="col-md-12 col-xs-12">
                         <div class="cart-container">
                             <div class="main-content-cart" id="main">
-                                <form action="/cart" method="post" id="cart-form-page">
+                                <form action="ship-info.php" method="post" id="cart-form-page">
                                     <div class="row">
                                         <!-- There are two conditions here : Empty and non-empty cart-->
                                         <div class="col-md-8 col-sm-12 col-xs-12" id="cart-content">
@@ -115,7 +113,10 @@ if (!$query_res) {
                                                                     <img src="<?php echo $product_img ?>"
                                                                         alt="<?php echo $product_name ?>">
                                                                     <h3><?php echo $product_name ?></h3>
-                                                                    <span><?php echo $unit_price ?> đ</span>
+                                                                    <span
+                                                                        class="unit-price-<?php echo $product_id; ?>"><?php echo $unit_price ?>
+                                                                        đ
+                                                                    </span>
                                                                 </a>
 
                                                             </div>
@@ -127,25 +128,28 @@ if (!$query_res) {
 
                                                         </td>
 
+                                                        <input type="hidden" name="product_id"
+                                                            value="<?php echo $product_id; ?>" />
+
                                                         <td class="qty">
                                                             <div class="qty qty-click">
-                                                                <button type="button"
-                                                                    class="btn btn-light qtyminus qty-btn">-</button>
+
                                                                 <input type="number" size="4" name="updates[]" min="1"
-                                                                    id="updates_<?php echo $product_id; ?>">
-                                                                <?php echo  $quantity ?>
+                                                                    id="updates_<?php echo $product_id; ?>"
+                                                                    value="<?php echo  $quantity ?>">
+
                                                                 </input>
-                                                                <button type="button"
-                                                                    class="btn btn-light qtyplus qty-btn">+</button>
+
                                                             </div>
                                                         </td>
 
                                                         <td class="linePrice">
                                                             <p class="price">
-                                                                <span class="line-item-total">
+                                                                <span data-id="<?php echo $product_id; ?>"
+                                                                    class="line-item-total">
                                                                     <?php
                                                                         echo $total_price;
-                                                                        ?> đ
+                                                                        ?>
                                                                 </span>
                                                             </p>
                                                         </td>
@@ -170,7 +174,7 @@ if (!$query_res) {
                                             <div class="total-cart">
                                                 <p class="order-info">
                                                     Tổng tiền
-                                                    <span class="total_price">
+                                                    <span data-id="<?php echo $product_id; ?>" class="total_price">
                                                         <b>
                                                             <?php
                                                             echo $total;
@@ -212,7 +216,9 @@ if (!$query_res) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <script type="text/javascript" src="./javascript/qty-input.js">
 
+    </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

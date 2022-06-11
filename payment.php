@@ -1,3 +1,42 @@
+<?php
+require_once 'db/connectdb.php';
+
+session_start();
+
+// if (!isset($_SESSION["id"]))
+//     header("Location: login.php"); # Change later
+
+
+// $sess_user_id = $_SESSION["id"]; # get user_id
+$sess_user_id = 0;
+
+function getUserInfo($user_id)
+{
+    global $conn;
+    $query = "SELECT * FROM `customer` WHERE customerID='$user_id'";
+    $row = mysqli_query($conn, $query);
+    return mysqli_fetch_assoc($row);
+}
+
+require './db/connectdb.php'; # connect to database
+
+$query = "SELECT `size`, `product_image`,`name`, `customerID`, `email`, `fullname`, `username`, `products_product_id1`, `quantity`, `unit_price` FROM (`customer` JOIN `cart` ON 
+(`cart`.`cart_id` = `customer`.`cart_cart_id` and `customer`.`customerID` = {$sess_user_id})
+ JOIN `product_in_cart` on (`cart`.`cart_id` = `product_in_cart`.`cart_cart_id`)) JOIN `products` ON `products`.`product_id` = `product_in_cart`.`products_product_id1`;";
+
+$query_res = mysqli_query($conn, $query);
+
+if (!$query_res) {
+    $message  = 'Invalid query: ' . mysqli_error($conn) . '<br>';
+    $message .= 'Whole query: ' . $query;
+    die($message);
+}
+
+$user_info = getUserInfo($sess_user_id);
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -14,7 +53,6 @@
     <link rel="stylesheet" href="font-awesome-4.7.0\font-awesome-4.7.0\css\font-awesome.min.css">
     <link href="./css/cart-table.css" type="text/css" rel="stylesheet">
     <link href="./css/ship-info.css" type="text/css" rel="stylesheet">
-    <script src="./javascript/cart-summary.js" type="text/javascript" async></script>
     <link href="./css/payment.css" type="text/css" rel="stylesheet">
 
     <title>Payment</title>
@@ -51,11 +89,13 @@
 
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="/cart"> Giỏ hàng </a>
+                            <a href="/cart.php"> Giỏ hàng </a>
                         </li>
 
                         <li class="breadcrumb-item">
-                            Thông tin giao hàng
+                            <a href="ship-info.php">
+                                Thông tin giao hàng
+                            </a>
                         </li>
 
                         <li class="breadcrumb-item active">
@@ -128,7 +168,7 @@
                             </div>
 
                             <div class="form-footer">
-                                <a class="cart-link" href="/cart"> Quay lại thông tin giao hàng </a>
+                                <a class="cart-link" href="/ship-info.php"> Quay lại thông tin giao hàng </a>
 
                                 <form id="form-next-step" method="post">
                                     <button class="btn btn-dark next-btn" type="button"> Hoàn tất đơn hàng </button>
@@ -166,7 +206,58 @@
                                 </thead>
 
                                 <tbody id="summary-body">
+                                    <?php
+                                    $total = 0;
+                                    while ($row = mysqli_fetch_assoc($query_res)) {
+                                        $product_id = (int) $row["customerID"];
+                                        $quantity = (int) $row["quantity"];
+                                        $product_name = $row["name"];
+                                        $product_img = $row["product_image"];
+                                        $unit_price = (int) $row["unit_price"];
+                                        $total_price = $quantity * $unit_price;
+                                        $size = $row["size"];
+                                        $total += $total_price;
 
+
+                                    ?>
+
+                                    <tr class="product">
+                                        <td class="product-image">
+                                            <div class="product-thumbnail">
+                                                <div class="product-thumbnail-wrapper">
+                                                    <img class="product-thumbnail-image"
+                                                        alt="<?php echo $product_name; ?>"
+                                                        src="<?php echo $product_img; ?>" />
+                                                </div>
+                                                <span class="product-thumbnail-quantity">
+                                                    <?php echo $quantity; ?>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="product-description-name order-summmary-emphasis">
+                                                <?php echo $product_name; ?>
+                                            </span>
+
+                                            <span class="product-description-variant order-summary-sm-text">
+                                                <?php echo $size; ?>
+                                            </span>
+
+
+                                        </td>
+
+                                        <td class="product-quantity visually-hidden">
+                                            <?php echo $quantity; ?>
+                                        </td>
+
+                                        <td class="product-price">
+                                            <span class="order-summary-emphasis">
+                                                <?php echo $total_price; ?>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -198,13 +289,14 @@
                                     <tr class="total-line total-line-subtotal">
                                         <td class="total-line total-line-name">Tạm tính</td>
                                         <td class="total-line total-line-price">
-                                            <span class="order-summary-emphasis" id="subtotal"> </span>
+                                            <span class="order-summary-emphasis" id="subtotal"> <?php echo $total; ?>
+                                            </span>
                                         </td>
                                     </tr>
                                     <tr class="total-line total-shipping">
                                         <td class="total-line total-line-name"> Phí vận chuyển</td>
                                         <td class="total-line total-line-price">
-                                            <span class="order-summary-emphasis" id="ship-price"> </span>
+                                            <span class="order-summary-emphasis" id="ship-price"> 50000 </span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -215,7 +307,7 @@
                                         <td class="total-line-label-total total-line-price">
                                             <span class="currency">VNĐ</span>
                                             <span class="payment-due-price" id="total-price">
-
+                                                <?php echo $total + 50000; ?>
                                             </span>
                                         </td>
                                     </tr>

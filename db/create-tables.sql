@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `ltw`.`customer` (
   `password` VARCHAR(100) NULL,
   `gender` ENUM('Male', 'Female', 'Others') NULL,
   `cart_cart_id` INT NOT NULL,
+  `address` VARCHAR(200),
   PRIMARY KEY (`customerID`),
   INDEX `fk_customer_cart_idx` (`cart_cart_id` ASC) VISIBLE,
   CONSTRAINT `fk_customer_cart`
@@ -88,6 +89,8 @@ CREATE TABLE IF NOT EXISTS `ltw`.`order` (
   `product_in_cart_cart_cart_id` INT NOT NULL,
   `product_in_cart_products_product_id` INT NOT NULL,
   `customer_customer_id` INT NOT NULL,
+  `order_address` VARCHAR(200) NOT NULL,
+  `state` ENUM('0', '1') NOT NULL,
   PRIMARY KEY (`orderID`),
   INDEX `fk_order_product_in_cart1_idx` (`product_in_cart_cart_cart_id` ASC, `product_in_cart_products_product_id` ASC) VISIBLE,
   CONSTRAINT `fk_order_product_in_cart1`
