@@ -4,6 +4,17 @@ USE `clothes_shop`;
 
 SET time_zone = "+07:00";
 
+
+CREATE TABLE `contact` (
+    `contact_id` INT UNSIGNED AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL,
+    `message` VARCHAR(255) NOT NULL,
+    `address` VARCHAR(255),
+    `phone` VARCHAR(15),
+    `email` VARCHAR(255),
+    PRIMARY KEY (`contact_id`)
+);
+
 CREATE TABLE `news` (
     `news_id` INT NOT NULL,
     `title` VARCHAR(255) NOT NULL,

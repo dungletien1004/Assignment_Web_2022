@@ -1,6 +1,7 @@
 <?php
-    global $page;
-    $page = "home";
+    session_start();
+    include_once 'db/db_connect.php';
+    $con = connect();
 ?>
 
 <!DOCTYPE html>
@@ -11,20 +12,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JQUERY CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/base.css">
     <!-- <link rel="stylesheet" href="./assets/css/home.css"> -->
     
+    <script>
+        function addContact() {
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'be/addContact.php',
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        alert(data)
+                    }
+                });
+
+            });
+
+        }
+    </script>
+
+
+
     <title>Clothes Shop</title>
 </head>
 <body>
@@ -109,7 +134,7 @@
     <!-- ORDER -->
     <div class="contact">
         <div class="heading-contact">LIÊN HỆ</div>
-        <form action="" method="POST">
+        <form action="" method="POST" id="contactForm">
             <div class="box-container">
 
                 <div class="box">
@@ -119,11 +144,11 @@
                     </div>
                     <div class="input-data">
                         <label for="note">Lời nhắn:</label>
-                        <input name="note" id="note" type="text" placeholder="Nhập lời nhắn...">
+                        <input name="message" id="note" type="text" placeholder="Nhập lời nhắn...">
                     </div>
                     <div class="input-data">
                         <label for="address">Địa chỉ:</label>
-                        <input id="product" type="text" placeholder="Nhập địa chỉ...">
+                        <input name="address" id="product" type="text" placeholder="Nhập địa chỉ...">
                     </div>
                 </div>
                 <div class="box">
@@ -142,7 +167,7 @@
                     
                 </div>
             </div>
-            <button type="submit" class="submitContact">Gửi liên hệ</button>
+            <button type="submit" class="submitContact" onclick="addContact()">Gửi liên hệ</button>
         </form>
 
     </div>
@@ -150,7 +175,11 @@
     <!-- FOOTER -->
     <?php include 'components/footer.php'?>
 
+
+
+    
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
     <script src="./js/home.js"></script>
 </body>
 </html>
