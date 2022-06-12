@@ -170,7 +170,7 @@ $user_info = getUserInfo($sess_user_id);
                             <div class="form-footer">
                                 <a class="cart-link" href="/ship-info.php"> Quay lại thông tin giao hàng </a>
 
-                                <form id="form-next-step" method="post">
+                                <form id="form-next-step" action="make-payment.php" method="post">
                                     <button class="btn btn-dark next-btn" type="button"> Hoàn tất đơn hàng </button>
                                 </form>
                             </div>

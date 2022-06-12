@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `ltw`.`product_in_cart` (
   `cart_cart_id` INT NOT NULL,
   `products_product_id1` INT NOT NULL,
   `size` ENUM('S', 'M', 'L', 'XL', 'XXL', 'XXXL') NOT NULL,
+  `order_id` INT,
   PRIMARY KEY (`cart_cart_id`, `products_product_id1`),
   INDEX `fk_product_in_cart_cart1_idx` (`cart_cart_id` ASC) VISIBLE,
   INDEX `fk_product_in_cart_products1_idx` (`products_product_id1` ASC) VISIBLE,
@@ -78,7 +79,11 @@ CREATE TABLE IF NOT EXISTS `ltw`.`product_in_cart` (
     REFERENCES `ltw`.`products` (`product_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
+  CONSTRAINT `fk_order_id`
+    FOREIGN KEY (`order_id`)
+    REFERENCES `ltw`.`order` (`orderID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 
 -- -----------------------------------------------------
 -- Table `ltw`.`order`
