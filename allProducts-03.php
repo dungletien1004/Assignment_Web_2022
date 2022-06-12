@@ -1,3 +1,20 @@
+<?php
+    require_once('dbhelp.php');
+    if(!empty($_POST)){
+        $p_ID = '';
+        if (isset($_POST['ID'])) {
+            $p_ID = $_POST['ID'];
+        }
+        if ($p_ID != '') {
+            $sql = "delete from product where ID = '$p_ID'";
+        }
+        execute($sql);
+        echo '<script type="text/javascript">alert("Xóa sản phẩm thành công!");',
+			 'window.location = "allProducts-03.php";',
+			 '</script>';
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -338,10 +355,13 @@
             <div class="middle-right-collum">
                 <?php
                     require_once('dbhelp.php');
-                    if(isset($_POST["search-holder"])){
+                    if(isset($_POST["search-holder"]) || isset($_GET["search-holder"])){
                         $s_text = '';
                         if (isset($_POST["search-holder"])){
                             $p_text = $_POST["search-holder"];
+                        }
+                        if (isset($_GET["search-holder"])){
+                            $p_text = $_GET["search-holder"];
                         }
                         if (strcasecmp($p_text, 'Tất Cả') != 0) {
                             $sql = 'select * from product where Type like "%'.$p_text.'%" or Name like "%'.$p_text.'%" or Color like "%'.$p_text.'%"
@@ -356,15 +376,15 @@
                     }
                     $productList = executeResult($sql);
                     foreach($productList as $std){
-                        $ID = $std['ID'];
                         if (strcasecmp($std['Sale'], '') != 0){
+                            $ID = $std['ID'];
                             echo
                             '<div class="product-item">
                                 <a>
                                     <img class="product-img" src="'.'.'.mb_substr($std['Image_1'], 35).'" alt="Product">
                                     <a class="edit" onclick=\'window.open("editProductDetail.php?id='.$std['ID'].'","_self")\'>Chỉnh Sửa</a>
                                     <br>
-                                    <a class="delete" onclick="openConfirmDelete()">Xóa</a>
+                                    <a class="delete" onclick="openConfirmDelete('.$std['ID'].')">Xóa</a>
                                     <div class="product-name">'.substr($std['Name'], 0, 15).' / '.$std['Color'].'</div>
                                 </a>
                                 <div class="clearfix"></div>
@@ -379,13 +399,14 @@
                             ';
                         }
                         else{
+                            $ID = $std['ID'];
                             echo
                             '<div class="product-item">
                                 <a>
                                     <img class="product-img" src="'.'.'.mb_substr($std['Image_1'], 35).'" alt="Product">
                                     <a class="edit" onclick=\'window.open("editProductDetail.php?id='.$std['ID'].'","_self")\'>Chỉnh Sửa</a>
                                     <br>
-                                    <a class="delete" onclick="openConfirmDelete()">Xóa</a>
+                                    <a class="delete" onclick="openConfirmDelete('.$std['ID'].')">Xóa</a>
                                     <div class="product-name">'.substr($std['Name'], 0, 15).' / '.$std['Color'].'</div>
                                 </a>
                                 <div class="clearfix"></div>
@@ -413,9 +434,9 @@
                     Bạn có muốn xóa sản phẩm này không?
                 </h2>
                 <div class="confirm-delete-btn">
-                    <form method="post" action="deleteProduct.php">
+                    <form enctype="multipart/form-data" method="post">
                         <input class="cancle-delete" onclick="closeConfirmDelete()" value="Hủy">
-                        <input type="number" class="product-ID" name="ID" value="<?=$ID?>">
+                        <input type="number" class="product-ID" name="ID" value="">
                         <button class="confirm-delete">Xác nhận</button>
                     </form>
                 </div>

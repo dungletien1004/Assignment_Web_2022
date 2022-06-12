@@ -265,7 +265,7 @@ html {
     word-wrap: break-word;
 }
 
-#product-img-02::-webkit-file-upload-button{
+#product-img-2::-webkit-file-upload-button{
     background-color: rgba(255, 0, 0, 0.9);
     border: none;
     color: #ffffff;
@@ -273,7 +273,7 @@ html {
     font-size: 80%;
 }
 
-#product-img-02{
+#product-img-2{
     background-color: white;
     color: red;
     cursor: pointer;
@@ -371,7 +371,8 @@ html {
     font-weight: 500;
 }
 
-.product-img-link,
+.product-img-link-01,
+.product-img-link-02,
 .product-ID{
     display: none;
 }

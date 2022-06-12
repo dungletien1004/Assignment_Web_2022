@@ -338,10 +338,13 @@
             <div class="middle-right-collum">
             <?php
                     require_once('dbhelp.php');
-                    if(isset($_POST["search-holder"])){
+                    if(isset($_POST["search-holder"]) || isset($_GET["search-holder"])){
                         $s_text = '';
                         if (isset($_POST["search-holder"])){
                             $p_text = $_POST["search-holder"];
+                        }
+                        if (isset($_GET["search-holder"])){
+                            $p_text = $_GET["search-holder"];
                         }
                         if (strcasecmp($p_text, 'Tất Cả') != 0) {
                             $sql = 'select * from product where Type like "%'.$p_text.'%" or Name like "%'.$p_text.'%" or Color like "%'.$p_text.'%"

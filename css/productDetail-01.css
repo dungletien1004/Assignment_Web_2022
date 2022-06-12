@@ -225,7 +225,7 @@ html {
     color: white;
     cursor: pointer;
     display: inline-flex;
-    font-size: 110%;
+    font-size: 100%;
     font-weight: bolder;
     text-align: center;
     align-items: center;
@@ -240,7 +240,7 @@ html {
     color: black;
     cursor: pointer;
     display: inline-flex;
-    font-size: 110%;
+    font-size: 100%;
     font-weight: bolder;
     text-align: center;
     align-items: center;
@@ -358,11 +358,13 @@ html {
 }
 
 .product-img{
+    cursor: pointer;
     width: 100%;
 }
 
 .product-name{
     color: black;
+    cursor: pointer;
     font-weight: 700;
     font-size: 100%;
     margin: 7px 0px;

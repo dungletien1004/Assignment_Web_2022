@@ -62,6 +62,72 @@ function xlSize(){
     size.value = 'XL';
 }
 
+function lSize1(){
+    l.style.backgroundColor = 'black';
+    l.style.color = 'white';
+    xl.style.backgroundColor = 'white';
+    xl.style.color = 'black';
+    size.value = 'L';
+}
+
+function xlSize1(){
+    xl.style.backgroundColor = 'black';
+    xl.style.color = 'white';
+    l.style.backgroundColor = 'white';
+    l.style.color = 'black';
+    size.value = 'XL';
+}
+
+function mSize2(){
+    m.style.backgroundColor = 'black';
+    m.style.color = 'white';
+    xl.style.backgroundColor = 'white';
+    xl.style.color = 'black';
+    size.value = 'M';
+}
+
+function xlSize2(){
+    xl.style.backgroundColor = 'black';
+    xl.style.color = 'white';
+    m.style.backgroundColor = 'white';
+    m.style.color = 'black';
+    size.value = 'XL';
+}
+
+function mSize3(){
+    m.style.backgroundColor = 'black';
+    m.style.color = 'white';
+    l.style.backgroundColor = 'white';
+    l.style.color = 'black';
+    size.value = 'M';
+}
+
+function lSize3(){
+    l.style.backgroundColor = 'black';
+    l.style.color = 'white';
+    m.style.backgroundColor = 'white';
+    m.style.color = 'black';
+    size.value = 'L';
+}
+
+function xlSize4(){
+    xl.style.backgroundColor = 'black';
+    xl.style.color = 'white';
+    size.value = 'XL';
+}
+
+function lSize5(){
+    l.style.backgroundColor = 'black';
+    l.style.color = 'white';
+    size.value = 'L';
+}
+
+function mSize6(){
+    m.style.backgroundColor = 'black';
+    m.style.color = 'white';
+    size.value = 'M';
+}
+
 function increaseNumber(){
     productNumber = Number(productNumber) + 1;
     number.value = productNumber;

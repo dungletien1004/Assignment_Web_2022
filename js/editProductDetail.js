@@ -7,7 +7,8 @@ var tmp2 = img2.src;
 var editMenu = document.querySelector('.edit-dropdown-menu');
 var confirmDelete = document.querySelector('.confirm-delete-modal');
 var changeImg = document.querySelector('.change-img-modal');
-var productImg = document.querySelector('.product-img-link');
+var productImg1 = document.querySelector('.product-img-link-01');
+var productImg2 = document.querySelector('.product-img-link-02');
 var sale = document.querySelector('.price-decrease-pecent');
 var price = document.querySelector('#product-price');
 var decreasePrice = document.querySelector('#product-decrease-price');
@@ -36,15 +37,13 @@ function editHover(){
     editMenu.style.display = 'block';
 }
 
-console.log(productImg);
-
 function editLeave(){
     editMenu.style.display = 'none';
 }
 
 function openConfirmDelete(){
     confirmDelete.style.display = 'block';
-    productImg.value = img.src;
+    productImg1.value = img.src;
 }
 
 function closeConfirmDelete(){
@@ -53,7 +52,7 @@ function closeConfirmDelete(){
 
 function openChangeImg(){
     changeImg.style.display = 'block';
-    productImg.value = img.src;
+    productImg2.value = img.src;
 }
 
 function closeChangeImg(){
@@ -67,6 +66,6 @@ function caculate(){
         sale.innerHTML = '0%';
     }
     else{
-        sale.innerHTML = '-' + String(temp) + '%';
+        sale.innerHTML = String(temp) + '%';
     }
 }

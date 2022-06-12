@@ -12,7 +12,7 @@
             $p_code = $std['Code'];
             $p_color = $std['Color'];
             $p_image1 = '.'.mb_substr($std['Image_1'], 35);
-            $p_image2 = '.'.mb_substr($std['Image_2'], 35);
+            $p_image2 = $std['Image_2'];
             $p_price = $std['OPrice'];
             $p_dprice = $std['PPrice'];
             $p_dpercent = $std['Sale'];
@@ -22,7 +22,15 @@
             $p_xlout = $std['XLOut'];
             $p_decription = $std['Decription'];
         }
+        if (strcasecmp($p_image2, '') != 0){
+            $p_image2 = '.'.mb_substr($std['Image_2'], 35);
+        }
         $p_dpercent = (string)(floor(100 - (float)$p_dpercent));
+    }
+
+    if (isset($_POST['search-holder'])){
+        $p_text = $_POST["search-holder"];
+        header("Location: allProducts-01.php?search-holder=".$p_text);
     }
 ?>
 
@@ -75,23 +83,117 @@
             <div class="middle-top">
                 <div class="middle-left-collum">
                     <img class="product-master-img" src="<?php echo $p_image1 ?>" alt="Product">
-                    <img class="product-slave-img" id="product-slave-img-01" src="<?php echo $p_image1 ?>" alt="Product" onclick="changeImg1()" onload="changeImg1()">
-                    <img class="product-slave-img" id="product-slave-img-02" src="<?php echo $p_image2 ?>" alt="Product" onclick="changeImg2()">
+                    <?php
+                        if (strcasecmp($p_image2, '') != 0){
+                            echo
+                            '
+                            <img class="product-slave-img" id="product-slave-img-01" src="'.$p_image1.'" alt="Product" onclick="changeImg1()" onclick="editLeave()">
+                            <img class="product-slave-img" id="product-slave-img-02" src="'.$p_image2.'" alt="Product" onclick="changeImg2()" onclick="editLeave()">
+                            ';
+                        }
+                        else{
+                            echo
+                            '
+                            <img class="product-slave-img" id="product-slave-img-01" src="'.$p_image1.'" alt="Product" onclick="editLeave()">
+                            ';
+                        }
+                    ?>
                 </div>
                 <div class="middle-right-collum">
                     <div class="product-detail-name"><?php echo $p_name ?> / <?php echo $p_color ?></div>
                     <div class="product-detail-code"><?php echo $p_code ?></div>
                     <hr class="info-hr">
                     <div class="price-container">
-                        <span class="price-decrease-pecent"><?php echo $p_dpercent ?>%</span>
-                        <span class="price-decrease"><?php echo $p_dprice ?>$</span>
-                        <span class="product-detail-price"><?php echo $p_price ?>$</span>
+                        <?php
+                            if (strcasecmp($std['Sale'], '') != 0){
+                                echo
+                                '
+                                <span class="price-decrease-pecent">-'.$p_dpercent.'%</span>
+                                <span class="price-decrease">'.$p_dprice.'$</span>
+                                <span class="product-detail-price">'.$p_price.'$</span>
+                                ';
+                            }
+                            else{
+                                echo
+                                '
+                                <span class="price-decrease-pecent" style="background-color: white; color: black; font-size: 170%;">'.$p_price.'$</span>
+                                ';
+                            }
+                        ?>
                     </div>
                     <hr class="info-hr">
                     <div class="size-container">
-                        <div class="m-size" onclick="mSize()">M</div>
-                        <div class="l-size" onclick="lSize()">L</div>
-                        <div class="xl-size" onclick="xlSize()">XL</div>
+                        <?php
+                            if ((strcasecmp($p_mout, '') == 0) && (strcasecmp($p_lout, '') == 0) && (strcasecmp($p_xlout, '') == 0)){
+                                echo
+                                '
+                                <div class="m-size" onclick="mSize()">M</div>
+                                <div class="l-size" onclick="lSize()">L</div>
+                                <div class="xl-size" onclick="xlSize()">XL</div>
+                                ';
+                            }
+                            else{
+                                if (strcasecmp($p_mout, '') != 0){
+                                    if (strcasecmp($p_lout, '') != 0){
+                                        echo
+                                        '
+                                        <div class="m-size" style="background-color: #A3A3A3; color: white;">M</div>
+                                        <div class="l-size" style="background-color: #A3A3A3; color: white;">L</div>
+                                        <div class="xl-size" onclick="xlSize4()" onload="xlSize4()">XL</div>
+                                        ';
+                                    }
+                                    else{
+                                        if (strcasecmp($p_xlout, '') != 0){
+                                            echo
+                                            '
+                                            <div class="m-size" style="background-color: #A3A3A3; color: white;">M</div>
+                                            <div class="l-size" onclick="lSize5()" onload="lSize5()">L</div>
+                                            <div class="xl-size" style="background-color: #A3A3A3; color: white;">XL</div>
+                                            ';
+                                        }
+                                        else{
+                                            echo
+                                            '
+                                            <div class="m-size" style="background-color: #A3A3A3; color: white;">M</div>
+                                            <div class="l-size" onclick="lSize1()" onload="lSize1()">L</div>
+                                            <div class="xl-size" onclick="xlSize1()" onload="xlSize1()">XL</div>
+                                            ';
+                                        }
+                                    }
+                                    
+                                }
+                                else{
+                                    if (strcasecmp($p_lout, '') != 0){
+                                        if (strcasecmp($p_xlout, '') != 0){
+                                            echo
+                                            '
+                                            <div class="m-size" onclick="mSize6()">M</div>
+                                            <div class="l-size" style="background-color: #A3A3A3; color: white;">L</div>
+                                            <div class="xl-size" style="background-color: #A3A3A3; color: white;">XL</div>
+                                            ';
+                                        }
+                                        else{
+                                            echo
+                                            '
+                                            <div class="m-size" onclick="mSize2()">M</div>
+                                            <div class="l-size" style="background-color: #A3A3A3; color: white;">L</div>
+                                            <div class="xl-size" onclick="xlSize2()">XL</div>
+                                            ';
+                                        }
+                                    }
+                                    else{
+                                        if (strcasecmp($p_xlout, '') != 0){
+                                            echo
+                                            '
+                                            <div class="m-size" onclick="mSize3()">M</div>
+                                            <div class="l-size" onclick="lSize3()">L</div>
+                                            <div class="xl-size" style="background-color: #A3A3A3; color: white;">XL</div>
+                                            ';
+                                        }
+                                    }
+                                }
+                            }
+                        ?>
                     </div>
                     <hr class="info-hr">
                     <form method="post">
@@ -101,8 +203,23 @@
                             <span class="plus" onclick="increaseNumber()"><i class="fa-solid fa-plus"></i></span>
                         </div>
                         <hr class="info-hr">
-                        <input type="number" id="product-id" name="ID" value="">
-                        <input type="text" id="product-size" name="size" value="M">
+                        <input type="number" id="product-id" name="ID" value="<?php echo $p_ID ?>">
+                        <?php
+                            if (strcasecmp($p_mout, '') != 0){
+                                if (strcasecmp($p_lout, '') != 0){
+                                    echo
+                                    '<input type="text" id="product-size" name="size" value="XL">';
+                                }
+                                else{
+                                    echo
+                                    '<input type="text" id="product-size" name="size" value="L">';
+                                }
+                            }
+                            else{
+                                echo
+                                '<input type="text" id="product-size" name="size" value="M">';
+                            }
+                        ?>
                         <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
                     </form>
                     <div class="product-detail-decription">
@@ -117,38 +234,42 @@
                 <h1 class="middle-bottom-title">SẢN PHẨM LIÊN QUAN</h1>
                 <?php
                     require_once('dbhelp.php');
-                    if(isset($_POST["search-click"])){
-                        $s_text = '';
-                        if (isset($_POST["search-holder"])){
-                            $p_text = $_POST["search-holder"];
-                        }
-                        if ($p_text != '') {
-                            $sql = 'select * from product where Type like "%'.$p_text.'%" or Name like "%'.$p_text.'%" or Color like "%'.$p_text.'%"
-                                    order by CHAR_LENGTH(Name)';
-                        }
-                    }
-                    else{
-                        $sql = 'select * from product order by CHAR_LENGTH(Name)';
-                    }
+                    $sql = 'select * from product order by CHAR_LENGTH(Name)';
                     $productList = executeResult($sql);
                     for($i = 0; $i < 8; $i++){
                         $std = $productList[$i];
-                        echo
-                        '<div class="product-item">
-                            <a onclick=\'window.open("productDetail-01.php?id='.$std['ID'].'","_self")\'>
-                                <img class="product-img" src="'.'.'.mb_substr($std['Image_1'], 35).'" alt="Product">
-                                <div class="product-name">'.substr($std['Name'], 0, 15).' / '.$std['Color'].'</div>
-                            </a>
-                            <div class="clearfix"></div>
-                            <div class="product-price">
-                                <span class="old-price"><del>'.$std['OPrice'].'$</del></span>
-                                <span class="present-price">'.$std['PPrice'].'$</span>
+                        if (strcasecmp($std['Sale'], '') != 0){
+                            echo
+                            '<div class="product-item">
+                                <a onclick=\'window.open("productDetail-01.php?id='.$std['ID'].'","_self")\'>
+                                    <img class="product-img" src="'.'.'.mb_substr($std['Image_1'], 35).'" alt="Product">
+                                    <div class="product-name">'.substr($std['Name'], 0, 15).' / '.$std['Color'].'</div>
+                                </a>
+                                <div class="clearfix"></div>
+                                <div class="product-price">
+                                    <span class="old-price"><del>'.$std['OPrice'].'$</del></span>
+                                    <span class="present-price">'.$std['PPrice'].'$</span>
+                                </div>
+                                <div class="sale-container">
+                                    <div id="sale">Sale!</div>
+                                </div>
                             </div>
-                            <div class="sale-container">
-                                <div id="sale">Sale!</div>
+                            ';
+                        }
+                        else{
+                            echo
+                            '<div class="product-item">
+                                <a onclick=\'window.open("productDetail-01.php?id='.$std['ID'].'","_self")\'>
+                                    <img class="product-img" src="'.'.'.mb_substr($std['Image_1'], 35).'" alt="Product">
+                                    <div class="product-name">'.substr($std['Name'], 0, 15).' / '.$std['Color'].'</div>
+                                </a>
+                                <div class="clearfix"></div>
+                                <div class="product-price">
+                                    <span class="present-price">'.$std['OPrice'].'$</span>
+                                </div>
                             </div>
-                        </div>
-                        ';
+                            ';
+                        }
                     }
                 ?>
             </div>

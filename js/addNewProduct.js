@@ -18,6 +18,6 @@ function caculate(){
         sale.innerHTML = '0%';
     }
     else{
-        sale.innerHTML = '-' + String(temp) + '%';
+        sale.innerHTML = String(temp) + '%';
     }
 }

@@ -2,7 +2,7 @@
     require_once('dbhelp.php');
     // Kiểm tra dữ liệu được post lên
     if(!empty($_POST)){
-        $p_name = $p_code = $p_color = $target_file1 = $target_file2 = $p_price = $p_dprice = $p_dpercent = $p_type = $p_decription= '';
+        $p_name = $p_code = $p_color = $target_file1 = $target_file2 = $p_price = $p_dprice = $p_dpercent = $p_type = $p_decription = '';
         $error = array();
 
         if (isset($_POST['product-name'])){
@@ -65,7 +65,7 @@
             $size_file1 = $_FILES['product-img-01']['size'];
             if ($size_file1 > 10485760){
                 $error['Image1'] = "Hình ảnh bạn chọn không được quá 5MB";
-                echo '<script type="text/javascript">alert("Hình ảnh số 1 không được quá 5MB!");',
+                echo '<script type="text/javascript">alert("Hình ảnh số 1 không được quá 10MB!");',
                 'window.location = "addNewProduct.php";',
                 '</script>';
             }
@@ -76,6 +76,14 @@
             if (!in_array(strtolower($file_type1), $file_type_allow)){
                 $error['Image1'] = "Định dạng hình ảnh không đúng";
                 echo '<script type="text/javascript">alert("Định dạng hình ảnh số 1 không đúng!");',
+                'window.location = "addNewProduct.php";',
+                '</script>';
+            }
+
+            // Kiểm tra file đã tồn tại trê hệ thống
+            if (file_exists($target_file1)){
+                $error['picture'] = "File bạn chọn đã tồn tại trên hệ thống";
+                echo '<script type="text/javascript">alert("Hình ảnh số 1 đã tồn tại trên hệ thống!");',
                 'window.location = "addNewProduct.php";',
                 '</script>';
             }
@@ -92,7 +100,7 @@
             $size_file2 = $_FILES['product-img-02']['size'];
             if ($size_file2 > 10485760){
                 $error['Image2'] = "Hình ảnh bạn chọn không được quá 5MB";
-                echo '<script type="text/javascript">alert("Hình ảnh số 2 không được quá 5MB!");',
+                echo '<script type="text/javascript">alert("Hình ảnh số 2 không được quá 10MB!");',
                 'window.location = "addNewProduct.php";',
                 '</script>';
             }
@@ -105,6 +113,14 @@
                 echo '<script type="text/javascript">alert("Định dạng hình ảnh số 2 không đúng!");',
                 'window.location = "addNewProduct.php";',
                 'console.log('.$file_type2.')',
+                '</script>';
+            }
+
+            // Kiểm tra file đã tồn tại trê hệ thống
+            if (file_exists($target_file2)){
+                $error['picture'] = "File bạn chọn đã tồn tại trên hệ thống";
+                echo '<script type="text/javascript">alert("Hình ảnh số 2 đã tồn tại trên hệ thống!");',
+                'window.location = "addNewProduct.php";',
                 '</script>';
             }
 
@@ -193,7 +209,7 @@
                     <span class="price-decrease-percent" name="price-decrease-percent">0%</span>
                     <hr class="info-hr">
                     <label class="product-label">Loại sản phẩm:</label>
-                    <input type="radio" class="product-type" id="product-type-01" name="product-type" value="Áo">
+                    <input type="radio" class="product-type" id="product-type-01" name="product-type" value="Áo" checked="checked">
                     <label class="product-label" for="product-type-01" id="product-type">Áo</label>
                     <input type="radio" class="product-type" id="product-type-02" name="product-type" value="Quần">
                     <label class="product-label" for="product-type-02" id="product-type">Quần</label>

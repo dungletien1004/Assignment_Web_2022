@@ -1,32 +1,285 @@
 <?php
     require_once('dbhelp.php');
-    $p_id = '';
+    if (isset($_POST['confirm-change'])){
+        $p_id1 = $target_file = $p_imgLink1 = '';
+        if (isset($_POST['ID'])){
+            $p_id1 = $_POST['ID'];
+        }
+        if (isset($_POST['product-img-link-02'])){
+            $p_imgLink1 = 'C:/xampp/htdocs'.mb_substr($_POST['product-img-link-02'], 16);
+        }
+        $error = array();
+        // Xử lý ảnh
+        // Bước 1: Tạo thư mục lưu file
+        $target_dir = "C:/xampp/htdocs/Assignment_Web_2022/images/";
+        if (!empty($_FILES['product-img'])){
+            $target_file = $target_dir . basename($_FILES['product-img']['name']);
+            
+            // Kiểm tra kích thước file
+            $size_file = $_FILES['product-img']['size'];
+            if ($size_file > 10485760){
+                $error['Image'] = "Hình ảnh bạn chọn không được quá 5MB";
+                echo '<script type="text/javascript">alert("Hình ảnh không được quá 10MB!");',
+                'window.location = "editProductDetail.php?id='.$p_id1.'";',
+                '</script>';
+            }
+
+            // Kiểm tra loại file
+            $file_type = pathinfo($target_file, PATHINFO_EXTENSION);
+            $file_type_allow = array('png', 'jpg', 'jpeg', 'gif');
+            if (!in_array(strtolower($file_type), $file_type_allow)){
+                $error['Image'] = "Định dạng hình ảnh không đúng";
+                echo '<script type="text/javascript">alert("Định dạng hình ảnh không đúng!");',
+                'window.location = "editProductDetail.php?id='.$p_id1.'";',
+                '</script>';
+            }
+
+            if (file_exists($target_file)){
+                $error['picture'] = "File bạn chọn đã tồn tại trên hệ thống";
+                echo '<script type="text/javascript">alert("Hình ảnh đã tồn tại trên hệ thống!");',
+                'window.location = "editProductDetail.php?id='.$p_id1.'";',
+                '</script>';
+            }
+
+            if (empty($error)){
+                move_uploaded_file($_FILES['product-img']['tmp_name'], $target_file);
+            }
+        }
+        if (empty($error)){
+            $sql = "select * from product where ID = '$p_id1'";
+            $productList = executeResult($sql);
+            if ($productList != NULL){
+                $std = $productList[0];
+                if (strcasecmp($p_imgLink1, $std['Image_1']) == 0){
+                    $sql = "update product set Image_1 = '$target_file' where ID = '$p_id1'";
+                    execute($sql);
+                    echo '<script type="text/javascript">alert("Đổi hình ảnh thành công");',
+                        'window.location = "editProductDetail.php?id='.$p_id1.'";',
+                        '</script>';
+                }
+                else{
+                    $sql = "update product set Image_2 = '$target_file' where ID = '$p_id1'";
+                    execute($sql);
+                    echo '<script type="text/javascript">alert("Đổi hình ảnh thành công");',
+                        'window.location = "editProductDetail.php?id='.$p_id1.'";',
+                        '</script>';
+                }
+            }
+			die();
+		}
+    }
+
+    if (isset($_POST['confirm-delete'])){
+        $p_id2 = $p_imgLink2 = $p_img2 = '';
+        if (isset($_POST['ID'])){
+            $p_id2 = $_POST['ID'];
+        }
+        if (isset($_POST['product-img-link-01'])){
+            $p_imgLink2 = 'C:/xampp/htdocs'.mb_substr($_POST['product-img-link-01'], 16);
+        }
+        
+        if (empty($error)){
+            $sql = "select * from product where ID = '$p_id2'";
+            $productList = executeResult($sql);
+            if ($productList != NULL){
+                $std = $productList[0];
+                $p_img2 = $std['Image_2'];
+                $p_imgTmp = mb_substr($p_imgLink2, 43);
+                if (strcasecmp($p_imgLink2, $std['Image_1']) == 0){
+                    unlink("images/$p_imgTmp");
+                    $sql = "update product set Image_1 = '$p_img2', Image_2 = '' where ID = '$p_id2'";
+                    execute($sql);
+                    echo '<script type="text/javascript">alert("Xóa hình ảnh thành công");',
+                        'window.location = "editProductDetail.php?id='.$p_id2.'";',
+                        '</script>';
+                }
+                else{
+                    unlink("images/$p_imgTmp");
+                    $sql = "update product set Image_2 = '' where ID = '$p_id2'";
+                    execute($sql);
+                    echo '<script type="text/javascript">alert("Xóa hình ảnh thành công");',
+                        'window.location = "editProductDetail.php?id='.$p_id2.'";',
+                        '</script>';
+                }
+            }
+			die();
+		}
+    }
+    if(isset($_POST['confirm-edit'])){
+        $p_name = $p_code = $p_color = $target_file = $p_price = $p_dprice = $p_dpercent = '';
+        $p_id = $p_type = $p_decription = $p_soldout = $p_mout = $p_lout = $p_xlout = '';
+        $error = array();
+
+        if (isset($_POST['ID'])){
+            $p_id = $_POST['ID'];
+        }
+
+        if (isset($_POST['product-name'])){
+            $p_name = $_POST['product-name'];
+        }
+        
+        if (isset($_POST['product-code'])){
+            $p_code = $_POST['product-code'];
+        }
+
+        if (isset($_POST['product-color'])){
+            $p_color = $_POST['product-color'];
+        }
+        
+        if (isset($_POST['product-price'])){
+            $p_price = $_POST['product-price'];
+        }
+
+        if (isset($_POST['product-decrease-price'])){
+            $p_dprice = $_POST['product-decrease-price'];
+
+        }
+
+        if (isset($_POST['product-decrease-price'])){
+            $p_dpercent = (string)((((float)$p_dprice)/((float)$p_price))*100);
+        }
+
+        if (isset($_POST['product-type'])){
+            $p_type = $_POST['product-type'];
+        }
+
+        if (isset($_POST['product-decription'])){
+            $p_decription = $_POST['product-decription'];
+        }
+
+        if (isset($_POST['product-sold-out'])){
+            $p_soldout = $_POST['product-sold-out'];
+        }
+
+        if (isset($_POST['product-M-out'])){
+            $p_mout = $_POST['product-M-out'];
+        }
+
+        if (isset($_POST['product-L-out'])){
+            $p_lout = $_POST['product-L-out'];
+        }
+
+        if (isset($_POST['product-XL-out'])){
+            $p_xlout = $_POST['product-XL-out'];
+        }
+
+        $sql = "select * from product where Code = '$p_code'";
+        $productList = executeResult($sql);
+        $std = $productList[0];
+        $id = $std['ID'];
+        if (strcasecmp($p_id, $id) != 0){
+            $error['Code'] = "Mã sản phẩm đã tồn tại trên hệ thống";
+            echo '<script type="text/javascript">alert("Mã sản phẩm đã tồn tại trên hệ thống!");',
+            'window.location = "editProductDetail.php?id='.$p_id.'";',
+            '</script>';
+        }
+
+        // Sửa dữ liệu nhập vào
+        $p_name = str_replace('\'','\\\'',$p_name);
+        $p_code = str_replace('\'','\\\'',$p_code);
+        $p_color = str_replace('\'','\\\'',$p_color);
+        $p_price = str_replace('\'','\\\'',$p_price);
+        $p_dprice = str_replace('\'','\\\'',$p_dprice);
+        $p_decription = str_replace('\'','\\\'',$p_decription);
+
+        // Xử lý ảnh
+        // Bước 1: Tạo thư mục lưu file
+        $target_dir = "C:/xampp/htdocs/Assignment_Web_2022/images/";
+        if ($_FILES['product-img-2']['name'] != ''){
+            $target_file2 = $target_dir . basename($_FILES['product-img-2']['name']);
+            
+            // Kiểm tra kích thước file
+            $size_file2 = $_FILES['product-img-2']['size'];
+            if ($size_file2 > 10485760){
+                $error['Image2'] = "Hình ảnh bạn chọn không được quá 5MB";
+                echo '<script type="text/javascript">alert("Hình ảnh không được quá 10MB!");',
+                'window.location = "editProductDetail.php?id='.$p_id.'";',
+                '</script>';
+            }
+
+            // Kiểm tra loại file
+            $file_type2 = pathinfo($target_file2, PATHINFO_EXTENSION);
+            $file_type_allow = array('png', 'jpg', 'jpeg', 'gif');
+            if (!in_array(strtolower($file_type2), $file_type_allow)){
+                $error['Image2'] = "Định dạng hình ảnh không đúng";
+                echo '<script type="text/javascript">alert("Định dạng hình ảnh không đúng!");',
+                'window.location = "editProductDetail.php?id='.$p_id.'";',
+                '</script>';
+            }
+
+            // Kiểm tra file đã tồn tại trê hệ thống
+            if (file_exists($target_file2)){
+                $error['picture'] = "File bạn chọn đã tồn tại trên hệ thống";
+                echo '<script type="text/javascript">alert("Hình ảnh đã tồn tại trên hệ thống!");',
+                'window.location = "editProductDetail.php?id='.$p_id.'";',
+                '</script>';
+            }
+
+            if (empty($error)){
+                move_uploaded_file($_FILES['product-img-2']['tmp_name'], $target_file2);
+            }
+        }
+
+        if (empty($error)){
+            $sql = "select * from product where ID = '$p_id'";
+            $productList = executeResult($sql);
+            if ($productList != NULL){
+                $std = $productList[0];
+                $p_img2 = $std['Image_2'];
+                if (strcasecmp($p_img2, '') == 0){
+                    $sql = "update product set Name = '$p_name', Code = '$p_code', Color = '$p_color', Image_2 = '$target_file2', OPrice = '$p_price', PPrice = '$p_dprice', Sale = '$p_dpercent', SoldOut = '$p_soldout', MOut = '$p_mout', LOut = '$p_lout', XLOut = '$p_xlout', Decription = '$p_decription', Type = '$p_type' where ID = '$p_id'";
+                }
+                else{
+                    $sql = "update product set Name = '$p_name', Code = '$p_code', Color = '$p_color', OPrice = '$p_price', PPrice = '$p_dprice', Sale = '$p_dpercent', SoldOut = '$p_soldout', MOut = '$p_mout', LOut = '$p_lout', XLOut = '$p_xlout', Decription = '$p_decription', Type = '$p_type' where ID = '$p_id'";
+                }
+                execute($sql);
+                echo '<script type="text/javascript">alert("Chỉnh sửa thông tin thành công!");',
+                    'window.location = "editProductDetail.php?id='.$p_id.'";',
+                    '</script>';
+                die();
+            }
+        }
+    }
+
+    $ppp_id = '';
     if (isset($_GET['id'])){
-        $p_id = $_GET['id'];
-        $sql = "select * from product where ID = '$p_id'";
+        $ppp_id = $_GET['id'];
+        $sql = "select * from product where ID = '$ppp_id'";
         $productList = executeResult($sql);
         if ($productList != NULL){
             $std = $productList[0];
-            $p_ID = $std['ID'];
-            $p_name = $std['Name'];
-            $p_code = $std['Code'];
-            $p_color = $std['Color'];
-            $p_image1 = '.'.mb_substr($std['Image_1'], 35);
-            $p_image2 = $std['Image_2'];
-            $p_price = $std['OPrice'];
-            $p_dprice = $std['PPrice'];
-            $p_dpercent = $std['Sale'];
-            $p_soldout = $std['SoldOut'];
-            $p_mout = $std['MOut'];
-            $p_lout = $std['LOut'];
-            $p_xlout = $std['XLOut'];
-            $p_decription = $std['Decription'];
-            $p_type = $std['Type'];
+            $pp_ID = $std['ID'];
+            $pp_name = $std['Name'];
+            $pp_code = $std['Code'];
+            $pp_color = $std['Color'];
+            $pp_image1 = '.'.mb_substr($std['Image_1'], 35);
+            $pp_image2 = $std['Image_2'];
+            $pp_price = $std['OPrice'];
+            $pp_dprice = $std['PPrice'];
+            $pp_dpercent = $std['Sale'];
+            $pp_soldout = $std['SoldOut'];
+            $pp_mout = $std['MOut'];
+            $pp_lout = $std['LOut'];
+            $pp_xlout = $std['XLOut'];
+            $pp_decription = $std['Decription'];
+            $pp_type = $std['Type'];
         }
-        if (strcasecmp($p_image2, '') != 0){
-            $p_image2 = '.'.mb_substr($std['Image_2'], 35);
+        if (strcasecmp($pp_image2, '') != 0){
+            $pp_image2 = '.'.mb_substr($std['Image_2'], 35);
         }
-        $p_dpercent = (string)(ceil(100 - (float)$p_dpercent));
+
+        if (strcasecmp($pp_dprice, '') == 0){
+            $pp_dprice = '';
+            $pp_dpercent = '0';
+        }
+        else{
+            $pp_dpercent = (string)(ceil(100 - (float)$pp_dpercent));
+        }
+    }
+
+    if (isset($_POST['search-holder'])){
+        $p_text = $_POST["search-holder"];
+        header("Location: allProducts-03.php?search-holder=".$p_text);
     }
 ?>
 
@@ -80,54 +333,62 @@
         <div class="middle" onclick="userLeave()">
             <div class="middle-top">
                 <div class="middle-left-collum">
-                    <img class="product-master-img" src="<?php echo $p_image1 ?>" alt="Product" onclick="editLeave()">
+                    <img class="product-master-img" src="<?php echo $pp_image1 ?>" alt="Product" onclick="editLeave()">
                     <?php
-                        if (strcasecmp($p_image2, '') != 0){
+                        if (strcasecmp($pp_image2, '') != 0){
                             echo
                             '
-                            <img class="product-slave-img" id="product-slave-img-01" src="'.$p_image1.'" alt="Product" onclick="changeImg1()" onload="changeImg1()" onclick="editLeave()">
-                            <img class="product-slave-img" id="product-slave-img-02" src="'.$p_image2.'" alt="Product" onclick="changeImg2()" onclick="editLeave()">
+                            <img class="product-slave-img" id="product-slave-img-01" src="'.$pp_image1.'" alt="Product" onclick="changeImg1()" onclick="editLeave()">
+                            <img class="product-slave-img" id="product-slave-img-02" src="'.$pp_image2.'" alt="Product" onclick="changeImg2()" onclick="editLeave()">
+                            <div class="edit-container">
+                                <i class="fa-solid fa-ellipsis-vertical" id="edit-sysbol" onclick="editHover()"></i>
+                                <div class="edit-dropdown-menu">
+                                    <a class="delete" onclick="openConfirmDelete()">Xóa</a>
+                                    <a class="edit" onclick="openChangeImg()">Thay đổi</a>
+                                </div>
+                            </div>
                             ';
                         }
                         else{
                             echo
                             '
-                            <img class="product-slave-img" id="product-slave-img-01" src="'.$p_image1.'" alt="Product" onclick="editLeave()">
+                            <img class="product-slave-img" id="product-slave-img-01" src="'.$pp_image1.'" alt="Product" onclick="editLeave()">
+                            <img class="product-slave-img" id="product-slave-img-02" src="'.$pp_image2.'" alt="Product" onclick="editLeave()" style="display: none;">
+                            <div class="edit-container">
+                                <i class="fa-solid fa-ellipsis-vertical" id="edit-sysbol" onclick="editHover()"></i>
+                                <div class="edit-dropdown-menu">
+                                    <a class="delete" onclick="openConfirmDelete()" style="display: none;">Xóa</a>
+                                    <a class="edit" onclick="openChangeImg()">Thay đổi</a>
+                                </div>
+                            </div>
                             ';
                         }
                     ?>
-                    <div class="edit-container">
-                        <i class="fa-solid fa-ellipsis-vertical" id="edit-sysbol" onclick="editHover()"></i>
-                        <div class="edit-dropdown-menu">
-                            <a class="delete" onclick="openConfirmDelete()">Xóa</a>
-                            <a class="edit" onclick="openChangeImg()">Thay đổi</a>
-                        </div>
-                    </div>
                 </div>
                 <div class="middle-right-collum" onclick="editLeave()">
-                    <form method="post">
-                        <input type="number" class="product-ID" name="ID" value="<?=$p_ID?>">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="number" class="product-ID" name="ID" value="<?=$pp_ID?>">
                         <label class="product-label" for="product-name">Tên sản phẩm:</label>
-                        <input type="text" class="product-input" id="product-name" name="product-name" value="<?php echo $p_name ?>">
+                        <input type="text" class="product-input" id="product-name" name="product-name" required="true" value="<?php echo $pp_name ?>">
                         <hr class="info-hr">
                         <label class="product-label" for="product-code">Mã sản phẩm:</label>
-                        <input type="text" class="product-input" id="product-code" name="product-code" value="<?php echo $p_code ?>">
+                        <input type="text" class="product-input" id="product-code" name="product-code" required="true" value="<?php echo $pp_code ?>">
                         <hr class="info-hr">
                         <label class="product-label" for="product-color">Màu sản phẩm:</label>
-                        <input type="text" class="product-input" id="product-color" name="product-color" value="<?php echo $p_color ?>">
+                        <input type="text" class="product-input" id="product-color" name="product-color" required="true" value="<?php echo $pp_color ?>">
                         <hr class="info-hr">
                         <label class="product-label" for="product-price">Giá gốc:</label>
-                        <input type="text" class="product-input" id="product-price" name="product-price" value="<?php echo $p_price ?>" onkeyup="caculate()">
+                        <input type="text" class="product-input" id="product-price" name="product-price" required="true" value="<?php echo $pp_price ?>" onkeyup="caculate()">
                         <hr class="info-hr">
                         <label class="product-label" for="product-decrease-price">Giá giảm:</label>
-                        <input type="text" class="product-input" id="product-decrease-price" name="product-decrease-price" value="<?php echo $p_dprice ?>" onkeyup="caculate()">
+                        <input type="text" class="product-input" id="product-decrease-price" name="product-decrease-price" value="<?php echo $pp_dprice ?>" onkeyup="caculate()">
                         <hr class="info-hr">
                         <label class="product-label">Giảm giá:</label>
-                        <span class="price-decrease-pecent">-<?php echo $p_dpercent ?>%</span>
+                        <span class="price-decrease-pecent"><?php echo $pp_dpercent ?>%</span>
                         <hr class="info-hr">
                         <label class="product-label" for="product-sold-out">Hết hàng:</label>
                         <?php
-                            if ($p_soldout == '1'){
+                            if ($pp_soldout == '1'){
                                 echo
                                 '<input type="checkbox" class="product-input" id="product-sold-out" name="product-sold-out" value="1" checked="checked">';
                             }
@@ -139,7 +400,7 @@
                             echo
                             '<label class="product-label" for="product-size-out" id="product-size-out">Hết size:</label>
                             <label class="product-label" for="product-M-out" id="product-size-out">M</label>';
-                            if ($p_mout == '1'){
+                            if ($pp_mout == '1'){
                                 echo
                                 '<input type="checkbox" class="product-input" id="product-M-out" name="product-M-out" value="1" checked="checked">';
                             }
@@ -150,7 +411,7 @@
 
                             echo
                             '<label class="product-label" for="product-L-out" id="product-size-out">L</label>';
-                            if ($p_lout == '1'){
+                            if ($pp_lout == '1'){
                                 echo
                                 '<input type="checkbox" class="product-input" id="product-L-out" name="product-L-out" value="1" checked="checked">';
                             }
@@ -161,7 +422,7 @@
 
                             echo
                             '<label class="product-label" for="product-XL-out" id="product-size-out">XL</label>';
-                            if ($p_lout == '1'){
+                            if ($pp_xlout == '1'){
                                 echo
                                 '<input type="checkbox" class="product-input" id="product-XL-out" name="product-XL-out" value="1" checked="checked">';
                             }
@@ -170,12 +431,12 @@
                                 '<input type="checkbox" class="product-input" id="product-XL-out" name="product-XL-out" value="1">';
                             }
 
-                            if (strcasecmp($p_image2, '') == 0){
+                            if (strcasecmp($pp_image2, '') == 0){
                                 echo
                                 '
                                 <hr class="info-hr">
-                                <label class="product-label" for="product-img-02">Thêm hình ảnh:</label>
-                                <input type="file" class="product-input" id="product-img-02" name="product-img-02">
+                                <label class="product-label" for="product-img-2">Thêm hình ảnh:</label>
+                                <input type="file" class="product-input" id="product-img-2" name="product-img-2">
                                 ';
                             }
 
@@ -184,7 +445,7 @@
                             <hr class="info-hr">
                             <label class="product-label">Loại sản phẩm:</label>
                             ';
-                            if (strcasecmp($p_type, 'Áo') == 0){
+                            if (strcasecmp($pp_type, 'Áo') == 0){
                                 echo
                                 '
                                 <input type="radio" class="product-type" id="product-type-01" name="product-type" value="Áo" checked="checked">
@@ -199,7 +460,7 @@
                                 ';
                             }
 
-                            if (strcasecmp($p_type, 'Quần') == 0){
+                            if (strcasecmp($pp_type, 'Quần') == 0){
                                 echo
                                 '
                                 <input type="radio" class="product-type" id="product-type-02" name="product-type" value="Quần" checked="checked">
@@ -214,7 +475,7 @@
                                 ';
                             }
 
-                            if (strcasecmp($p_type, 'Giày') == 0){
+                            if (strcasecmp($pp_type, 'Giày') == 0){
                                 echo
                                 '
                                 <input type="radio" class="product-type" id="product-type-03" name="product-type" value="Giày" checked="checked">
@@ -229,7 +490,7 @@
                                 ';
                             }
 
-                            if (strcasecmp($p_type, 'Túi xách') == 0){
+                            if (strcasecmp($pp_type, 'Túi xách') == 0){
                                 echo
                                 '
                                 <input type="radio" class="product-type" id="product-type-04" name="product-type" value="Túi Xách" checked="checked">
@@ -247,10 +508,9 @@
                         <hr class="info-hr">
                         <label class="product-label" for="product-decription">Mô tả:</label>
                         <br>
-                        <textarea class="product-input" id="product-decription" name="product-decription" cols="40" rows="7"><?php echo $p_decription ?></textarea>
+                        <textarea class="product-input" id="product-decription" name="product-decription" cols="40" rows="7"><?php echo $pp_decription ?></textarea>
                         <br>
-                        <input type="number" class="product-ID" name="ID" value="<?=$ID?>">
-                        <button class="save">Xác nhận</button>
+                        <input type="submit" class="save" name="confirm-edit" value="Xác nhận">
                         <input class="cancle" onclick="window.location='allProducts-03.php';" value="Hủy">
                     </form>
                 </div>
@@ -264,9 +524,9 @@
                 <div class="confirm-delete-btn">
                     <form method="post">
                         <input class="cancle-delete" onclick="closeConfirmDelete()" value="Hủy">
-                        <input type="number" class="product-ID" name="ID" value="<?=$p_ID?>">
-                        <input type="text" class="product-img-link" name="product-img-link" value="">
-                        <button class="confirm-delete">Xác nhận</button>
+                        <input type="number" class="product-ID" name="ID" value="<?=$pp_ID?>">
+                        <input type="text" class="product-img-link-01" name="product-img-link-01" value="<?=$pp_image1?>">
+                        <input type="submit" class="confirm-delete" name="confirm-delete" value="Xác nhận">
                     </form>
                 </div>
             </div>
@@ -274,14 +534,14 @@
         <div class="change-img-modal">
             <div id="change-img-container">
                 <div class="change-img-btn">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <label for="product-img" class="change-img-title">Chọn ảnh để thay thế:</label>
-                        <input type="file" class="product-img" id="product-img" name="product-img">
+                        <input type="file" class="product-img" id="product-img" name="product-img"  required="true">
                         <br>
                         <input class="cancle-change" onclick="closeChangeImg()" value="Hủy">
-                        <input type="number" class="product-ID" name="ID" value="<?=$p_ID?>">
-                        <input type="text" class="product-img-link" name="product-img-link" value="">
-                        <button class="confirm-change">Xác nhận</button>
+                        <input type="number" class="product-ID" name="ID" value="<?=$pp_ID?>">
+                        <input type="text" class="product-img-link-02" name="product-img-link-02" value="<?=$pp_image1?>">
+                        <input type="submit" class="confirm-change" name="confirm-change" value="Xác nhận">
                     </form>
                 </div>
             </div>
