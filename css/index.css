@@ -1,0 +1,350 @@
+
+
+
+/* -------------- SLIDER -------------- */
+.slider {
+    width: 100%;
+    position: relative;
+}
+.slide {
+    height: 650px;
+    position: relative;
+    display: flex;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: black;
+    opacity: 0.4;
+    
+}
+.slide .content {
+    z-index: 1;
+    color: var(--white-color);
+    text-align: center;
+    transition: transform linear 0.2s;
+}
+.slide .content:hover {
+    transform: scale(1.2);
+}
+.slide .content .heading {
+    font-size: 4.8rem;
+    font-weight: 700;
+}
+.slide-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: 2rem;
+    margin-top: 12px;
+    display: inline-block;
+}
+.slide-btn:hover {
+    opacity: 0.8;
+    color: white;
+}
+.home .swiper-button-next {
+    top: 90%;
+    right: 2rem;
+    
+}
+.home .swiper-button-prev {
+    top: 90%;
+    right: 8rem;
+    left: auto;
+}
+  
+.swiper-button-next,
+.swiper-button-prev {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    background: rgba(232, 13, 13, 0.5);
+    border: 0.1rem solid rgba(0, 0, 0, 0.3);
+    color: black;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: var(--secondary-color);
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 2rem;
+}
+
+
+
+/* ---------------- TOP SALE ------------------ */
+.top-sale {
+    padding: 30px 3%;
+}
+.top-sale .heading {
+    font-size: 4.8rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin: 40px 0;
+    
+}
+.product {
+    width: 280px;
+    position: relative;
+    border: 1px solid #ccc;
+    background: white;
+    transition: transform linear 0.1s;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    margin: 30px 0;
+}
+.product:hover {
+    transform: scale(1.1);
+}
+.product img {
+    width: 100%;
+}
+.product .name {
+    font-size: 2.4rem;
+    font-weight: 600;
+    padding: 12px 0 0 12px;
+}
+.product .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+}
+.product .quantity {
+    font-size: 1.2rem;
+    padding: 12px 0 0 12px;
+}
+.product .price {
+    font-size: 2.4rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+.product .price span {
+    text-decoration: line-through;
+    color: #A3A3A3;
+}
+.product .action {
+    display: flex;
+}
+.product .heart {
+    background: var(--primary-color);
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    display: flex;
+}
+.product .heart a {
+    font-size: 2rem;
+    margin: auto;
+}
+.product .add-to-cart {
+    background: var(--primary-color);
+    border: none;
+    border-radius: 20px;
+    width: 80px;
+    height: 28px;
+    display: flex;
+    margin-left: 12px;
+}
+.product .add-to-cart i {
+    margin: auto;
+    font-size: 2rem;
+    color: white;
+}
+
+
+/* --------------- PRODUCTS---------------- */
+.products {
+    width: 100%;
+    background: var(--primary-color);
+    padding: 30px 3%;
+}
+.menu {
+    background-color: black;
+    margin: 30px 0;
+}
+.menu .heading {
+    width: 100%;
+    font-size: 2.4rem;
+    color: white;
+    border-bottom: 1px solid white;
+    padding: 12px 20px;
+}
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+.menu-list .category {
+    color: white;
+    margin: 4px 0;
+    font-size: 2rem;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+}
+.menu-list .category.active {
+    color: var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
+}
+#products-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#products-list .product {
+    width: 22%;
+    min-width: 200px;
+    margin: 30px 4px 12px 4px;
+    
+}
+
+
+/* ------------STANDARD----------- */
+.about {
+    width: 100%;
+    padding: 50px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.about .img, .about .content {
+    flex: 1 1 41rem;
+    padding: 12px;
+}
+.about img {
+    width: 100%;
+}
+
+.standard {
+    display: flex;
+    justify-content: space-between;
+}
+.standard-item {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.standard-item span {
+    margin-top: 24px;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 0.3;
+}
+
+
+
+
+/* ---------------contact----------- */
+.heading-contact {
+    font-size: 4.8rem;
+    color: white;
+    font-weight: 500;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin: 40px 0;
+    
+}
+.contact h4 {
+    text-align: center;
+    font-weight: 300;
+    color: white;
+    margin-top: -20px;
+}
+.contact {
+    background: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contact form {
+    padding: 12px;
+    background: white;
+    width:90%;
+    position: relative;
+    margin-bottom: 32px;
+    
+}
+.box-container {
+    
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.contact .box {
+    flex: 1 1 41rem;
+}
+.contact .input-data {
+    margin: 12px;
+}
+.contact .input-data label {
+    font-weight: 400;
+}
+.contact .input-data input {
+    width: 100%;
+    color: #444;
+    border: 1px solid #444;
+    padding-left: 12px;
+    height: 40px;
+    
+    font-weight: 300;
+}
+.contact .input-data input:hover {
+    outline: none;
+}
+
+.input-data iframe {
+    width: 100%;
+}
+.submitContact, .viewProduct {
+    background: var(--primary-color);
+    padding: 12px 16px;
+    color: white;
+    border-radius: 5px;
+    margin: 12px;   
+}
+.viewProduct {
+    margin: 30px 0 0 0;
+}
+
+/* ------------------ ANIMATION ---------------- */
+@keyframes down {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* -----------------SMALL PHONE --------------*/
+@media only screen and (max-width: 512px) {
+    .col-footer {
+        flex-direction: column;
+    }
+    #products-list .product {
+        width: 50%;
+    }
+}
+    
+
