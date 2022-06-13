@@ -15,10 +15,17 @@ if($_POST){
     if (move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file)) {
       echo "The file ". htmlspecialchars( basename( $_FILES["profileImage"]["name"])). " has been uploaded.";
     } else {
-      $target_file = "img/avt/avt";
+      $target_file = "img/avt/avt.png";
     }
-    $sql =  "UPDATE `customer` SET `fullname` = '$fullname',`email`= '$email',`phone`='$phone',`gender` = '$gender',`bdate`='$bdate', `avt` = '$target_file' WHERE username = '$username';";
-    mysqli_query($conn,$sql);
+    if($target_file == "img/avt/avt.png"){
+      $sql =  "UPDATE `customer` SET `fullname` = '$fullname',`email`= '$email',`phone`='$phone',`gender` = '$gender',`bdate`='$bdate' WHERE username = '$username';";
+      mysqli_query($conn,$sql);
+    }
+    else{
+      $sql =  "UPDATE `customer` SET `fullname` = '$fullname',`email`= '$email',`phone`='$phone',`gender` = '$gender',`bdate`='$bdate', `avt` = '$target_file' WHERE username = '$username';";
+      mysqli_query($conn,$sql);
+    }
+    
     header("Location: ./profile.php");
   }
 
