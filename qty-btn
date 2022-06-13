@@ -1,0 +1,126 @@
+[33mcommit 58ca9a2273e1ae9a57c9ead63804214a82e97891[m[33m ([m[1;36mHEAD -> [m[1;32mcart/payment-Hieu[m[33m, [m[1;31morigin/cart/payment-Hieu[m[33m)[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Thu Apr 7 15:26:22 2022 +0700
+
+    change html to php and create sql scripts
+
+[33mcommit a291e1df870c56848727efd578b61015075f0ae5[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Thu Apr 7 15:25:36 2022 +0700
+
+    change to php, add sql scripts to gen tables and demo data
+
+[33mcommit 5cddf467e4ba2b8b13ea60d5d8e05488e0df2cb8[m
+Merge: 8bf4c87 37d0c75
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Mon Mar 21 15:28:09 2022 +0700
+
+    Merge branch 'cart/payment-Hieu' of github.com:dungletien1004/Assignment_Web_2022 into cart/payment-Hieu
+
+[33mcommit 8bf4c872a888e3a837bd7c2869bd5d40d4ede7b4[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Mon Mar 21 15:27:57 2022 +0700
+
+    change page title
+
+[33mcommit 37d0c75b4a7c6eeb2c5c2a99f07837bc472c2dc7[m
+Author: Thanh Hieu <49335345+ThanhHieuDang0706@users.noreply.github.com>
+Date:   Mon Mar 21 15:26:57 2022 +0700
+
+    Update README.md
+
+[33mcommit 980671be1e1c3adfa55b33ff38bce52160b7d9a5[m
+Author: Thanh Hieu <49335345+ThanhHieuDang0706@users.noreply.github.com>
+Date:   Mon Mar 21 15:25:24 2022 +0700
+
+    update readme
+
+[33mcommit 8685d34ff0d1a680070b39e61f785418ef4b51b9[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Mon Mar 21 15:23:04 2022 +0700
+
+    add payment+ship
+
+[33mcommit 32c9d231d88c0678916dba12f05a031e637817c2[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Sat Mar 19 14:53:16 2022 +0700
+
+    add form ship-info
+
+[33mcommit fcf6c11ab27f5920a0e7caa93951fa274d5eaef1[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Wed Mar 16 10:31:51 2022 +0700
+
+    gitignore
+
+[33mcommit 4bca14f242f10ec1f9745d3aa35d4818af1e9eff[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Wed Mar 16 09:42:42 2022 +0700
+
+    add gitignore
+
+[33mcommit 1bd0966f3d9663c109954847f6497930c46eb1ce[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Wed Mar 16 09:41:56 2022 +0700
+
+    add gitignore
+
+[33mcommit 2565a34a9958feb69c6171dd584d30d0c8e5d2e9[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Wed Mar 16 07:55:29 2022 +0700
+
+    update readme
+
+[33mcommit d5cbc01bc052566617105b5cb5e87bfff1be2f4b[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Wed Mar 16 07:54:00 2022 +0700
+
+    update readme
+
+[33mcommit ea7a6582d9acbba112e44bfd76de47b31df565ac[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Wed Mar 16 07:45:07 2022 +0700
+
+    add empty cart page
+
+[33mcommit 88b491165cb0e452409ac21e34a91171b2517ea5[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Tue Mar 15 16:25:32 2022 +0700
+
+    add total-payment-button
+
+[33mcommit 44927571689e3d6e4a6df3c8ec7886f12fbc35b1[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Mon Mar 14 17:41:48 2022 +0700
+
+    add table-cart
+
+[33mcommit 1da36f86ada697dd3ac426c4369cdf55c1bc8edf[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Mon Mar 14 16:52:20 2022 +0700
+
+    tao data maqu va tao bang cho cart js
+
+[33mcommit 7d94336c9cd62fc301181a5ab52b14409871cac7[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Sun Mar 13 21:36:43 2022 +0700
+
+    add layout for payment
+
+[33mcommit 4f814c81bf246b23967cdfa2397d1c5b532053f0[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Mon Mar 7 15:01:22 2022 +0700
+
+    add layout
+
+[33mcommit 8cfff1842a1cce24990c842865600bc70f81ed39[m
+Author: ThanhHieuDang0706 <hieu.dang.dth_is_me@hcmut.edu.vn>
+Date:   Mon Mar 7 14:33:38 2022 +0700
+
+    add layout/breadcrumb
+
+[33mcommit 0de6158e401dbbd5ec1802a435f0cbeff69e4ba6[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: dungletien1004 <83952985+dungletien1004@users.noreply.github.com>
+Date:   Sun Feb 27 10:01:25 2022 +0700
+
+    Initial commit

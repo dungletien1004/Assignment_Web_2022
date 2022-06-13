@@ -1,0 +1,166 @@
+.header {
+    background: #E70E0E;
+    height: 80px;
+    right: 0;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 2%;
+    z-index: 5;
+   
+}
+
+.logo a{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.logo-text {
+    font-weight:500;
+    font-size: 30px;
+    margin-left: 8px;
+    color: black;
+}
+.logo-text span {
+    color: white;
+}
+.search-bar {
+    outline: none;
+    max-width: 350px;
+    height: 40px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    flex: 1;
+    margin: 0 12px;
+}
+.search-bar input {
+    outline: none;
+    border: none;
+    margin-left: 10px;
+    font-size: 1.8rem;
+}
+.search-bar input::placeholder {
+    color: #aaa;
+    font-weight: 200;
+}
+.search-bar label {
+    padding-top: 6px;
+    font-size: 1.4rem;
+}
+.nav {
+    display: flex;
+    align-items: center;
+}
+.nav-bar a:hover {
+    opacity: 0.8
+}
+.nav-bar a{
+    color: white;
+    font-size: 1.8rem;
+    margin: 0 6px;
+    letter-spacing: -0.5px;
+}
+.nav .user-icon{
+    margin-left: 20px;
+}
+.nav .menu-icon, .nav .search-icon {
+    display: none;
+}
+
+.avt {
+    position: relative;
+    margin-left: 12px;
+}
+.avt img{
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.list-action {
+    position: absolute;
+    
+    top: calc(100%);
+    right: 2%;
+    background-color: white;
+    width: 150px;
+    display: none;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
+}
+.list-action a {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+    display: block;
+}
+.list-action a:hover {
+    background: var(--primary-color);
+    color: white;
+}
+.avt:hover .list-action {
+    display: block;
+    animation: down linear 0.2s;
+}
+
+.active {
+    color: black;
+}
+
+
+/* -------------- PHONE -------------- */
+@media only screen and (max-width: 768px) {
+    
+    .nav .search-icon {
+        display: inline-block;
+    }
+    .search-bar {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 80%;
+        display: none;
+        border: 1px solid #ccc;
+    }
+    .search-bar.active {
+        display: flex;
+        animation: down linear 0.2s;
+    }
+   
+}
+
+/* -----------TABLET-------------- */
+@media only screen and (max-width: 992px) {
+    .nav .menu-icon {
+        display: inline-block;
+    }
+    .menu-icon {
+        margin-right: 16px;
+    }
+    .nav-bar {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background-color: var(--secondary-color);
+        flex-direction: column;
+        display: none;
+
+    }
+    .nav-bar a {
+        padding: 12px;
+        margin-left: 12px;
+    }
+    .nav-bar.active {
+        display: flex;
+        animation: down linear 0.2s;
+    }
+
+}

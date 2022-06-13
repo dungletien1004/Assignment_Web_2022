@@ -1,0 +1,417 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #ffffff;
+  color: #5a5a5a;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.header-top {
+  background: linear-gradient(180deg, #ff9b05 0%, #e70e0e 100%);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  height: 11vh;
+}
+
+.logo-1 {
+  float: left;
+}
+
+.search-container {
+  background-color: #ffffff;
+  border-radius: 5px;
+  float: left;
+  height: 4vh;
+  margin: 25px;
+  margin-left: 60px;
+}
+
+.search-bar {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  float: right;
+  height: 4vh;
+  outline: none;
+  padding: 0px 8px;
+}
+
+.search-icon {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  float: left;
+  height: 4vh;
+  outline: none;
+  padding-left: 7px;
+}
+
+.header-nav {
+  list-style: none;
+  float: left;
+  margin-top: 27px;
+  margin-left: 45px;
+}
+
+.header-nav li {
+  display: inline-block;
+  margin-left: 40px;
+  transition: all 0.3s;
+}
+
+.header-nav li a:hover,
+.header-nav li a:active {
+  color: black;
+}
+
+.header-nav li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#product-link {
+  color: black;
+}
+
+.user-menu {
+  height: 9vh;
+  float: right;
+  width: 70px;
+}
+
+/* .user-icon {
+  color: red;
+  cursor: pointer;
+  margin-top: 27px;
+  margin-right: 45px;
+} */
+
+.user-icon:hover,
+.user-icon:active {
+  color: #f1f1f1;
+}
+
+.user-dropdown-menu {
+  border-radius: 10px;
+  border: 0.5px solid #e5e5e5;
+  background-color: white;
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+}
+
+.user-signin,
+.user-signup {
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+  display: block;
+  font-size: 100%;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  width: 200px;
+}
+
+.user-signin:hover,
+.user-signin:active,
+.user-signup:hover,
+.user-signup:active {
+  background-color: #f1f1f1;
+}
+
+.header-bottom {
+  background: linear-gradient(180deg, #ff9b05 0%, #e70e0e 100%);
+  height: 25vh;
+  text-align: center;
+}
+
+.logo-2 {
+  height: 25vh;
+}
+
+.middle-left-collum {
+  float: left;
+  transition: all 0.4s ease-in-out;
+  width: 20%;
+}
+
+.menu-title {
+  color: black;
+  font-size: 200%;
+  font-weight: 700;
+  line-height: 1.5em;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.title-hr {
+  border-style: inset;
+  border-width: 1px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 97%;
+}
+
+.menu-item {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.menu-all,
+.menu-shirt,
+.menu-pants,
+.menu-shoes,
+.menu-bags {
+  background-color: #ffffff;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-size: 150%;
+  font-weight: 700;
+  margin-left: 20px;
+  line-height: 2em;
+  outline: none;
+}
+
+.menu-shirt:hover,
+.menu-pants:hover,
+.menu-shoes:hover,
+.menu-bags:hover,
+.menu-all:hover,
+.menu-shirt:active,
+.menu-pants:active,
+.menu-shoes:active,
+.menu-bags:active,
+.menu-all:active {
+  color: #e70e0e;
+}
+
+.search-product,
+.fa-arrow-right-long {
+  display: none;
+}
+
+.all-hr,
+.shirt-hr,
+.pants-hr,
+.shoes-hr,
+.bags-hr {
+  border-style: inset;
+  border-width: 1px;
+  display: none;
+  margin-right: auto;
+  width: 60%;
+}
+
+.middle-right-collum {
+  float: right;
+  text-align: center;
+  width: 80%;
+}
+
+.product-item {
+  border-bottom: 2px dotted #dfe0e1;
+  color: black;
+  float: left;
+  margin: 10px;
+  position: relative;
+  text-align: center;
+  width: 22%;
+}
+
+.product-item a {
+  text-decoration: none;
+}
+
+.product-img {
+  cursor: pointer;
+  width: 100%;
+}
+
+.product-img-out {
+  cursor: pointer;
+  filter: brightness(60%) blur(2px);
+  width: 100%;
+}
+
+.sold-out {
+  color: #ff1818;
+  cursor: pointer;
+  font-size: 200%;
+  font-weight: bold;
+  position: absolute;
+  top: 80%;
+  left: 55%;
+  text-decoration: none;
+  transform: translate(-65%, -200%);
+  transition: all 0.5s;
+}
+
+.product-name {
+  cursor: pointer;
+  color: black;
+  font-weight: 700;
+  font-size: 100%;
+  margin: 7px 0px;
+}
+
+.product-price {
+  font-weight: 700;
+  font-size: 110%;
+  margin: 7px 0px;
+}
+
+.old-price {
+  color: #6f6f6f;
+  margin-right: 15px;
+}
+
+.sale-container {
+  background: #c80000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  height: 8%;
+  left: 0px;
+  position: absolute;
+  text-align: center;
+  top: -2px;
+  width: 25%;
+}
+
+#sale {
+  box-shadow: none;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 120%;
+}
+
+.next-page {
+  margin: 30px 0px;
+}
+
+.move {
+  color: black;
+  font-weight: 700;
+  font-size: 150%;
+  margin: 0px 15px;
+  text-decoration: none;
+}
+
+.move:hover,
+.move:active {
+  color: #838181;
+}
+
+footer {
+  background-color: black;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-collum-1 {
+  color: #ffffff;
+  float: left;
+  text-align: left;
+  width: 30%;
+}
+
+.footer-collum-2 {
+  color: #a3a3a3;
+  float: left;
+  text-align: left;
+  width: 25%;
+}
+
+.footer-collum-3 {
+  color: #a3a3a3;
+  float: left;
+  text-align: left;
+  width: 25%;
+}
+
+.footer-collum-4 {
+  color: #a3a3a3;
+  float: right;
+  width: 20%;
+}
+
+.contact-item {
+  margin-left: 23px;
+  line-height: 2em;
+}
+
+.care-item {
+  margin-left: 50px;
+  line-height: 1.5em;
+  list-style: none;
+}
+
+.care-item li a {
+  color: #a3a3a3;
+  text-decoration: none;
+}
+
+.care-item li a:hover,
+.care-item li a:active {
+  color: #ffffff;
+}
+
+.title {
+  margin: 20px 0px;
+  margin-left: 50px;
+}
+
+.title-1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-bottom {
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.social-item {
+  color: #ffffff;
+  font-size: 200%;
+  margin: 20px 10px;
+  padding: 20px 0px;
+  text-decoration: none;
+  transition: all 0.4s;
+}
+
+.social-item:hover,
+.social-item:active {
+  color: #9acd32;
+}
+
+.footer-hr {
+  border-style: inset;
+  border-width: 1px;
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.footer-bottom-title {
+  color: #a3a3a3;
+  margin: 20px 0px;
+  padding-bottom: 20px;
+}

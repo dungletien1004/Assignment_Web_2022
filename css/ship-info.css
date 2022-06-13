@@ -1,0 +1,169 @@
+input {
+    text-align: left;
+}
+
+.main-content {
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.section-header {
+    margin-bottom: 1.5em;
+    position: relative;
+}
+
+.gavatar {
+    display: table-cell;
+    padding-right: 1em;
+    white-space: nowrap;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+}
+
+.logged-in-customer-info {
+    display: flex;
+    color: #737373;
+}
+
+.avatar {
+    margin-right: 1em;
+}
+
+.step {
+    width: 60%;
+}
+
+.form-footer {
+    margin-top: 40px;
+    height: auto;
+}
+
+.cart-link {
+    color: rgb(70, 104, 179);
+    float: left;
+}
+
+#form-next-step {
+    float: right;
+}
+
+label {
+    font-size: 0.85em;
+    color: #999999;
+}
+
+.next-btn:hover {
+    background: whitesmoke;
+    color: black;
+}
+
+.sidebar-content {
+    width: 40%;
+    margin-left: 10vh;
+}
+
+.product-thumbnail {
+    width: 4.6em;
+    height: 4.6em;
+    border-radius: 8px;
+    position: relative;
+    margin: 0.8em;
+}
+
+.product-thumbnail-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.product-thumbnail-image {
+    max-width: 100%;
+    max-height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+}
+
+.product-thumbnail-quantity {
+    font-size: 0.85em;
+    font-weight: 500;
+    padding: 0.15em 0.65em;
+    position: absolute;
+    white-space: nowrap;
+    background-color: rgba(153, 153, 153, 0.9);
+    border-radius: 60%;
+    color: #fff;
+    top: -0.65em;
+    right: -0.65em;
+    z-index: 2;
+}
+
+.order-summary-sm-text {
+    font-size: 0.85em;
+    color: #969696;
+    display: block;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+}
+
+@media only screen and (max-width: 1024px) {
+    .main-content {
+        display: block;
+    }
+    .step {
+        width: 100%;
+    }
+    .cart-link {
+        padding-bottom: 20px;
+    }
+    .sidebar-content {
+        width: 100%;
+        margin: 2em 2em;
+    }
+}
+
+.field-label {
+    visibility: hidden;
+    position: absolute;
+}
+
+.field-input-wrapper {
+    width: 100%;
+    display: flex;
+    padding-top: 2em;
+    padding-bottom: 2.8em;
+}
+
+.field-input {
+    width: 100%;
+    border-radius: 15px;
+    padding-left: 1em;
+    margin-right: 1em;
+}
+
+.field-input-btn {
+    white-space: nowrap;
+    width: auto;
+    margin: 0 0.2em;
+    float: right;
+    justify-content: end;
+}
+
+.currency {
+    font-size: 0.85em;
+    color: #969696;
+}
+
+td {
+    padding-top: 0.75em;
+}
+
+.total-line-price {
+    text-align: right;
+}
