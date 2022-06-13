@@ -25,7 +25,7 @@
         if (strcasecmp($p_image2, '') != 0){
             $p_image2 = '.'.mb_substr($std['Image_2'], 35);
         }
-        $p_dpercent = (string)(floor(100 - (float)$p_dpercent));
+        $p_dpercent = (string)(ceil(100 - (float)$p_dpercent));
     }
 
     if (isset($_POST['search-holder'])){

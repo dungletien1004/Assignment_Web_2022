@@ -17,3 +17,10 @@ function executeResult($sql){
     mysqli_close($conn);
     return $list;
 }
+
+function numberResult($sql){
+    $conn = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+    $result = mysqli_query($conn, $sql);
+    $number_of_result = mysqli_num_rows($result);
+    return $number_of_result;
+}

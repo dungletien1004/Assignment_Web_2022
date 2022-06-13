@@ -355,6 +355,12 @@
             <div class="middle-right-collum">
                 <?php
                     require_once('dbhelp.php');
+                    $sql1 = 'select * from product order by CHAR_LENGTH(Name)';
+                    $productPerPage = 8;
+                    $totalProduct = numberResult($sql1);
+                    $totalPage = ceil($totalProduct/$productPerPage);
+                    $currentPage = !empty($_GET['page'])?$_GET['page']:1;
+                    $offset = ($currentPage - 1) * $productPerPage;
                     if(isset($_POST["search-holder"]) || isset($_GET["search-holder"])){
                         $s_text = '';
                         if (isset($_POST["search-holder"])){
@@ -365,14 +371,14 @@
                         }
                         if (strcasecmp($p_text, 'Tất Cả') != 0) {
                             $sql = 'select * from product where Type like "%'.$p_text.'%" or Name like "%'.$p_text.'%" or Color like "%'.$p_text.'%"
-                                    order by CHAR_LENGTH(Name)';
+                                    order by CHAR_LENGTH(Name) LIMIT '.$productPerPage.' OFFSET '.$offset.'';
                         }
                         else{
-                            $sql = 'select * from product order by CHAR_LENGTH(Name)';
+                            $sql = 'select * from product order by CHAR_LENGTH(Name) LIMIT '.$productPerPage.' OFFSET '.$offset.'';
                         }
                     }
                     else{
-                        $sql = 'select * from product order by CHAR_LENGTH(Name)';
+                        $sql = 'select * from product order by CHAR_LENGTH(Name) LIMIT '.$productPerPage.' OFFSET '.$offset.'';
                     }
                     $productList = executeResult($sql);
                     foreach($productList as $std){
@@ -420,11 +426,28 @@
                 ?>
                 <div class="clearfix"></div>
                 <div class="next-page">
-                    <a href="#" class="move"><i class="fa-solid fa-left-long"></i></a>
-                    <a href="#" class="move" style="color: #838181;">1</a>
-                    <a href="#" class="move">2</a>
-                    <a href="#" class="move">3</a>
-                    <a href="#" class="move"><i class="fa-solid fa-right-long"></i></a>
+                    <?php
+                        if ($currentPage != 1){
+                            $previousPage = $currentPage - 1;
+                            echo
+                            '<a href="allProducts-03.php?page='.$previousPage.'" class="move"><i class="fa-solid fa-left-long"></i></a>';
+                        }
+                        for ($i = 1; $i <= $totalPage; $i++){
+                            if ($i != $currentPage){
+                                echo
+                                '<a href="allProducts-03.php?page='.$i.'" class="move">'.$i.'</a>';
+                            }
+                            else{
+                                echo
+                                '<a href="allProducts-03.php?page='.$i.'" class="move" style="color: #838181;">'.$i.'</a>';
+                            }
+                        }
+                        if ($currentPage != $totalPage){
+                            $nextPage = $currentPage + 1;
+                            echo
+                            '<a href="allProducts-03.php?page='.$nextPage.'" class="move"><i class="fa-solid fa-right-long"></i></a>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>

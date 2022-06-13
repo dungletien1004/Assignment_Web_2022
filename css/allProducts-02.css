@@ -306,10 +306,6 @@ html {
     margin: 30px 0px;
 }
 
-.next-page a:first-child{
-    color: #838181;
-}
-
 .move{
     color: black;
     font-weight: 700;
