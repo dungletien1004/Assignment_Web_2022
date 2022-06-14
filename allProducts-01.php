@@ -48,10 +48,9 @@
                 </div>
                 <div class="nav">
                     <nav class="nav-bar">
-                        <a href="" style="color:black;">Trang chủ</a>
-                        <a href="./allProducts-01.php">Sản phẩm</a>
-                        <a href="">Tin tức</a>
-                        <a href="#contact">Liên hệ</a>
+                        <a href="./index.php" >Trang chủ</a>
+                        <a href="./allProducts-01.php" style="color:black;">Sản phẩm</a>
+                        <a href="./index.php#contact">Liên hệ</a>
                         <a href="./signup.php">Đăng Ký</a>
                     </nav>
                     <div class="fas fa-list-ul icon menu-icon"></div>

@@ -112,8 +112,8 @@
         </div>
         <div class="nav">
             <nav class="nav-bar">
-                <a href="" style="color:black;">Trang chủ</a>
-                <a href="./allProducts-01.php">Sản phẩm</a>
+                <a href="" >Trang chủ</a>
+                <a href="./allProducts-01.php" style="color:black;">Sản phẩm</a>
                 <a href="">Tin tức</a>
                 <a href="#contact">Liên hệ</a>
                 <a href="./signup.php">Đăng Ký</a>
@@ -241,7 +241,7 @@
                         ?>
                     </div>
                     <hr class="info-hr">
-                    <form method="post">
+                    <form method="post" action="cart-1.php">
                         <div class="number-container">
                             <span class="minus" onclick="decreaseNumber()"><i class="fa-solid fa-minus"></i></span>
                             <input id="number" name="number" value="1" size="2">

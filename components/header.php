@@ -25,7 +25,7 @@
         </div>
         <div class="search-bar">
             <label for="search-box" class="fas fa-search"></label>
-            <input type="search" name="" placeholder="Type to search..." id="search-box">
+            <input type="search" name="search-holder" placeholder="Type to search..." id="search-box">
         </div>
         <div class="nav">
             <nav class="nav-bar">

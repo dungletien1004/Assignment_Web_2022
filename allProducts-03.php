@@ -483,7 +483,7 @@
                     <form enctype="multipart/form-data" method="post">
                         <input class="cancle-delete" onclick="closeConfirmDelete()" value="Hủy">
                         <input type="number" class="product-ID" name="ID" value="">
-                        <input class="confirm-delete" name="confirmDelete" value="Xác nhận">
+                        <input type="submit" class="confirm-delete" name="confirmDelete" value="Xác nhận">
                     </form>
                 </div>
             </div>

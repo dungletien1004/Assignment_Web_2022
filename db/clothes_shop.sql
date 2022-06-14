@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 13, 2022 lúc 07:08 PM
+-- Thời gian đã tạo: Th6 14, 2022 lúc 03:07 AM
 -- Phiên bản máy phục vụ: 10.4.22-MariaDB
 -- Phiên bản PHP: 7.4.27
 
@@ -59,7 +59,9 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`cart_id`, `total_price`) VALUES
 (27, '0'),
-(28, '0');
+(28, '0'),
+(29, '0'),
+(30, '0');
 
 -- --------------------------------------------------------
 
@@ -75,6 +77,14 @@ CREATE TABLE `contact` (
   `phone` varchar(15) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `contact`
+--
+
+INSERT INTO `contact` (`contact_id`, `name`, `message`, `address`, `phone`, `email`) VALUES
+(1, 'demo1@gmail.com', 'ádasd', 'asss', '0912113213', ''),
+(2, 'demo1@gmail.com', 'đấ', 'asss', '0912113213', '');
 
 -- --------------------------------------------------------
 
@@ -101,8 +111,10 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customerID`, `phone`, `email`, `fullname`, `username`, `password`, `gender`, `cart_cart_id`, `admin`, `bdate`, `avt`) VALUES
-(27, NULL, NULL, 'qưeqw', '1', 'e10adc3949ba59abbe56e057f20f883e', 'Male', 27, 0, '2022-06-13', 'img/avt/avt.png'),
-(28, NULL, NULL, 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Male', 28, 1, '2022-06-13', 'img/avt/avt.png');
+(27, '0912113213', 'demo1@gmail.com', 'qưeqw', '1', 'e10adc3949ba59abbe56e057f20f883e', 'Others', 27, 0, '2022-06-13', 'img/avt/122025434_407428080262289_5200249438427713244_n.jpg'),
+(28, '0912113213', 'admin@gmail.com', 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'Male', 28, 1, '2022-06-13', 'img/avt/126021556_3613665975419101_4174596181152765036_n.jpg'),
+(29, '09', 'aaa@gmail.com', 'fullname112', '2', 'e10adc3949ba59abbe56e057f20f883e', 'Male', 29, 0, '2022-06-14', 'img/avt/124084668_1054510848305560_4051778775231500106_o.jpg'),
+(30, '0912113213', 'demo1@gmail.com', 'demo', 'demo', 'e10adc3949ba59abbe56e057f20f883e', 'Male', 30, 0, '2022-06-14', 'img/avt/download.jpg');
 
 -- --------------------------------------------------------
 
@@ -177,13 +189,11 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`ID`, `Name`, `Code`, `Color`, `Image_1`, `Image_2`, `OPrice`, `PPrice`, `Sale`, `SoldOut`, `MOut`, `LOut`, `XLOut`, `Decription`, `Type`) VALUES
 (10, 'CACOPHONY TEE', 'BKU: CO2000', 'Black', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-01-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-01-2.png', '180', '69', '38.333333333333', '', '', '', '', 'Đẹp mà!', 'Áo'),
-(11, 'AAA', 'BKU: CO2001', 'Dark Green', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-02-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-02-2.png', '1800', '79', '4.3888888888889', '1', '', '', '', 'Nhìn mát mà!', 'Áo'),
 (12, 'MINIMALISM TEE', 'BKU: CO2002', 'Black', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-03-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-03-2.png', '180', '69', '38.333333333333', '', '', '', '', 'Đơn giản ha!', 'Áo'),
 (13, 'PIXEL ICON TEE', 'BKU: CO2003', 'Black', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-04-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-04-2.png', '180', '99', '55', '', '', '', '', 'Nhìn trất\'sss nha!', 'Áo'),
 (14, 'THE RACE TEE', 'BKU: CO2004', 'Black', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-05-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-05-2.png', '180', '99', '55', '', '', '', '', 'Nhìn năng động thế!', 'Áo'),
 (15, 'CHALLENGE OF LOVE TEE', 'BKU: CO2005', 'Black', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-06-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-06-2.png', '180', '99', '55', '', '', '', '', 'Thật dễ thương phải không nào!', 'Áo'),
 (16, 'WORLDWIDE LOGO TEE', 'BKU: CO2006', 'Black', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-07-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-07-2.png', '180', '99', '55', '', '', '', '', 'Đẹp mà đúng không!', 'Áo'),
-(17, 'TAG ME TEE', 'BKU: CO2007', 'White', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-08-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-08-2.png', '180', '100', '', '', '', '', '', '', 'Áo'),
 (18, 'TAG ME TEE', 'BKU: CO2008', 'Coban Blue', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-09-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-09-2.png', '180', '69', '38.333333333333', '', '', '', '', '', 'Áo'),
 (19, 'SAIGON TOUR TEE', 'BKU: CO2009', 'Black', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-10-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-10-2.png', '180', '79', '43.888888888889', '', '', '', '', 'Du lịch thôi!', 'Áo'),
 (20, 'SAIGON TOUR TEE', 'BKU: CO2010', 'White', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-11-1.png', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-11-2.png', '180', '79', '43.888888888889', '', '', '', '', 'Du lịch thôi!', 'Áo'),
@@ -192,7 +202,7 @@ INSERT INTO `product` (`ID`, `Name`, `Code`, `Color`, `Image_1`, `Image_2`, `OPr
 (23, 'BARCODE TEE', 'BKU: CO2013', 'Black', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-13-1.png', '', '180', '69', '38.333333333333', '', '', '', '', '', 'Áo'),
 (24, 'BARCODE TEE', 'BKU: CO2014', 'White', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-14-1.png', '', '180', '69', '38.333333333333', '', '', '', '', '', 'Áo'),
 (25, 'BARCODE TEE', 'BKU: CO2015', 'Xanh', 'C:/xampp/htdocs/Assignment_Web_2022/images/Product-15-1.png', '', '180', '69', '38.333333333333', '', '', '', '', '', 'Áo'),
-(26, 'BB', '123', 'RED', 'C:/xampp/htdocs/Assignment_Web_2022/images/126021556_3613665975419101_4174596181152765036_n.jpg', 'C:/xampp/htdocs/Assignment_Web_2022/images/122025434_407428080262289_5200249438427713244_n.jpg', '1800', '123', '6.8333333333333', '', '', '', '', '', 'Túi Xách');
+(28, 'BBâ', '123', 'WHITE', 'C:/xampp/htdocs/Assignment_Web_2022/images/download (2).jpg', 'C:/xampp/htdocs/Assignment_Web_2022/images/download (3).jpg', '1800', '170', '9.4444444444444', '', '', '', '', '', 'Quần');
 
 -- --------------------------------------------------------
 
@@ -248,7 +258,11 @@ INSERT INTO `product_in_cart` (`p_c_id`, `quantity`, `cart_cart_id`, `products_p
 (1, '10', 27, 17, 'M'),
 (4, '3', 27, 17, 'XL'),
 (7, '5', 27, 17, 'L'),
-(8, '1', 27, 26, 'M');
+(8, '1', 27, 26, 'M'),
+(9, '3', 29, 26, 'M'),
+(10, '2', 29, 26, 'L'),
+(11, '2', 29, 17, 'M'),
+(12, '4', 30, 27, 'M');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -325,25 +339,25 @@ ALTER TABLE `product_in_cart`
 -- AUTO_INCREMENT cho bảng `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `contact_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `product_in_cart`
 --
 ALTER TABLE `product_in_cart`
-  MODIFY `p_c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `p_c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

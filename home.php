@@ -112,7 +112,15 @@
         <div class="content">
             <h2>Welcome to our clothes shop!</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi optio at, saepe accusamus dolorum, quos eos nesciunt amet exercitationem illum quis nostrum, repellat quaerat eum debitis fugit alias magnam omnis!</p>
-            <button class="viewProduct"><a href="listProduct">Xem sản phẩm</a></button>
+            <button class="viewProduct"><a href="<?php 
+            
+            if($_SESSION['admin'] == 1){
+                echo "./allProducts-03.php";
+            }
+            else{
+                echo "./allProducts-02.php";
+            }
+            ?>">Xem sản phẩm</a></button>
             <div class="standard">
                 <div class="standard-item">
                     <img src="img/standard/clothes.png" alt="Clothes">

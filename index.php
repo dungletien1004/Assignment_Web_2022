@@ -70,7 +70,6 @@
             <nav class="nav-bar">
                 <a href="" style="color:black;">Trang chủ</a>
                 <a href="./allProducts-01.php">Sản phẩm</a>
-                <a href="">Tin tức</a>
                 <a href="#contact">Liên hệ</a>
                 <a href="./signup.php">Đăng Ký</a>
             </nav>
@@ -136,7 +135,7 @@
         <div class="content">
             <h2>Welcome to our clothes shop!</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi optio at, saepe accusamus dolorum, quos eos nesciunt amet exercitationem illum quis nostrum, repellat quaerat eum debitis fugit alias magnam omnis!</p>
-            <button class="viewProduct"><a href="listProduct">Xem sản phẩm</a></button>
+            <button class="viewProduct"><a href="./allProducts-01.php">Xem sản phẩm</a></button>
             <div class="standard">
                 <div class="standard-item">
                     <img src="img/standard/clothes.png" alt="Clothes">
